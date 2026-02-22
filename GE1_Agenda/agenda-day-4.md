@@ -2,7 +2,11 @@
 | --------------------------- | ------------------- | ------------------------------- |
 | **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 4
+---
+
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 4
 
 - **[Datenbank Indizes](../SQ2_Index/README.md)**
   - Sinn u. Zweck
@@ -29,5 +33,19 @@
 ---
 
 - **Prüfungsvorbereitung**
-  - ![Aufgabe Tonträgerverwaltung](./../SQ2_Index/x_gitres/Tontrager-Aufgabe.pdf)  
-  - ![Musterlösung Tonträgerverwaltung](./../SQ2_Index/x_gitres/Tonträgerverwaltung.zip)
+  - [Aufgabe Tonträgerverwaltung](./../SQ2_Index/x_gitres/Tontrager-Aufgabe.pdf)  
+  - [Musterlösung Tonträgerverwaltung](./../SQ2_Index/x_gitres/Tonträgerverwaltung.zip)
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Sie kennen die grundlegenden Speicherstrukturen in Datenbanksystemen.
+- [x] Sie können die Einsatzbereiche, Sinn u. Zweck von Datenbank Indizes erläutern.
+- [x] Sie sind in der Lage in SQL Indizes zu erstellen und zu prüfen.
+- [x] Sie können zu einer Datenbankabfrage einen Ausführungsplan erstellen.
+- [x] Sie können den Ausführungsplan analysieren und Vorschläge zur Beschleunigung (Tuning) ableiten.

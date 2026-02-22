@@ -2,15 +2,13 @@
 | --------------------------- | ------------------- | ------------------------------- |
 | **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 5
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
 
-- **Prüfung 1**
-  - Theorie, Closed Book
-  - ca. 16-20 Fragen zu PowerShell
-  - ohne Skript Programmierung
-  - Dauer ca. 35min
+## Agenda Tag 5
+
+- **[Prüfung 1](../GE4_Exams/E1-Schema.md)**
   
 ---
 
@@ -27,3 +25,16 @@
   - Einführung
   - Vor- und Nachteile
   - Vergleich zu normalen Views
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Sie können die Einsatzbereiche, Sinn u. Zweck von **Datenbank Views** (virtuelle Tabellen) erläutern.
+- [x] Sie sind in der Lage in **SQL Views** zu erstellen und zu prüfen.
+- [x] Sie können die Vor- und Nachteile von **materialisierten** Views erläutern.
+- [x] Sie können Views basierte Abfragen erstellen

@@ -2,9 +2,11 @@
 | --------------------------- | ------------------- | ------------------------------- |
 | **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 6
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 6
 
 - **[TSQL-Einführung](../TS1_Procedures/README.md)**
   - Variablen
@@ -32,3 +34,15 @@
   - Vor- und Nachteile
   - Function vs. Stored Procedure
   - Praxis, Übungsaufgaben
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Sie können die Einsatzbereiche, Sinn u. Zweck von Datenbank Prozeduren erläutern.
+- [x] Sie können Vor- und Nachteile von Datenbank Prozeduren erläutern.
+- [x] Sie können die Basiselemente von T-SQL (Variablen, Ablaufsteuerungselemente) implementieren.

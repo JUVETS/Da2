@@ -2,6 +2,10 @@
 | --------------------------- | ------------------- | ------------------------------- |
 | **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](./../x_gitres/logo.png) |
 
+---
+
+![Agenda](../x_gitres/agenda.png)
+
 # Agenda Tag 7
 
 </br>
