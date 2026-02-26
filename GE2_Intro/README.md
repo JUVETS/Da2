@@ -37,8 +37,8 @@
 - Arbeitgeber/Tätigkeiten
 - Berufliche Ziele
 - Grund für diese Ausbildung
-- Erfahrungen mit Programmieren/Software-Entwicklung
-- Erwartungen an den Kurs "Skripttechniken"
+- Erfahrungen mit SQL-Datenbanken
+- Erwartungen an den Kurs "Datenbanken 2"
 
 ---
 
@@ -72,8 +72,7 @@
   
 - **Prozedurale Elemente**
   - TSQL – Transact SQL
-  - TSQL - Stored Procedures
-  - TSQL - Functions
+  - TSQL - Stored Procedures / Functions
   - TSQL - Triggers
 
 ---
@@ -91,6 +90,7 @@
   - Vorbereitung auf den nächsten Unterricht
 - **Unterricht**
   - Unklarheiten, Praxis, neue Erkenntnisse
+  - Online Unterricht mit Kamerapflicht (bei Begrüssung und Theorie)
 - **Hausaufgaben, Übungen**
   - Vertiefung, Beispiele, Übungen
 - **Kontrolle, Prüfungen**

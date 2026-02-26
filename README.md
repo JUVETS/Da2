@@ -4,7 +4,7 @@
 
 </br>
 
-# TSI - Datenbanken 2 - Praxisorientierte Datenbankentwicklung
+# TSI - Datenbanken Da2 - Praxisorientierte Datenbankentwicklung
 
 </br>
 
