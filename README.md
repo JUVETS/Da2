@@ -14,8 +14,8 @@
 
 ## Kompetenz
 
-- Logisches Datenbankschema mit Standardsprachmitteln (Structured Query Language SQL) in ein relationales Datenbank Management System (RDBMS) integrieren. Transaktionen durchführen.
-- Bereitet Daten durch Abfragen auf und nimmt Optimierungen zur Leistungssteigerung vor.
+- Logisches Datenbankschema mit Standardsprachmitteln (Structured Query Language SQL) in ein **relationales Datenbank** Management System (RDBMS) integrieren. Transaktionen durchführen.
+- Bereitet Daten durch **Abfragen** auf und nimmt **Optimierungen** zur Leistungssteigerung vor.
 - Ändert Struktur und Daten einer Datenbank, schützt die Daten durch Zugriffsberechtigungen und sichert die Daten wie auch das Datenbankschema in einem Backup.
 - Kundenanforderungen für Informationen und Informationsbestände aufnehmen, analysieren und Datenmodell(e) entwickeln
 
@@ -23,7 +23,7 @@
 
 ## Objekt
 
-- Datenbanken mit bis zu zehn Tabellen (einfache, komplexe und rekursive Beziehungstypen) und schützenswerten Daten (z.B. Kunden- oder Patientenverwaltung).
+- Datenbanken mit bis zu **zehn Tabellen** (einfache, komplexe und rekursive Beziehungstypen) und schützenswerten Daten (z.B. Kunden- oder Patientenverwaltung).
 
 ---
 

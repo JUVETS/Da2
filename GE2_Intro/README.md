@@ -38,7 +38,7 @@
 - Berufliche Ziele
 - Grund für diese Ausbildung
 - Erfahrungen mit SQL-Datenbanken
-- Erwartungen an den Kurs "Datenbanken 2"
+- Erwartungen an den Kurs "**Datenbanken 2**"
 
 ---
 
