@@ -8,36 +8,39 @@
     - [1.1.2. Konsistenz](#112-konsistenz)
     - [1.1.3. Isolation](#113-isolation)
     - [1.1.4. Dauerhaftigkeit](#114-dauerhaftigkeit)
-  - [1.2. COMMIT / ROLLBACK](#12-commit--rollback)
-  - [1.3. Transaktionsabbrüche](#13-transaktionsabbrüche)
-  - [1.4. ROLLBACK](#14-rollback)
-  - [1.5. Dauer einer Transaktion](#15-dauer-einer-transaktion)
-  - [1.6. Beispiel einer Transaktion](#16-beispiel-einer-transaktion)
-  - [1.7. LOCK-Mechanismen](#17-lock-mechanismen)
-  - [1.8. Isolations Levels](#18-isolations-levels)
-  - [1.9. Probleme im Mehrbenutzerbetrieb](#19-probleme-im-mehrbenutzerbetrieb)
-  - [1.10. Konzepte](#110-konzepte)
-    - [1.10.1. Pessimistische Verfahren](#1101-pessimistische-verfahren)
-    - [1.10.2. Optimistische Verfahren](#1102-optimistische-verfahren)
-    - [1.10.3. Vergleich](#1103-vergleich)
-    - [1.10.4. Zusammenfassung](#1104-zusammenfassung)
-  - [1.11. Transaction Log](#111-transaction-log)
-    - [1.11.1. Vorgehen](#1111-vorgehen)
-    - [1.11.2. Mirroring](#1112-mirroring)
-    - [1.11.3. Schlussfolgerung](#1113-schlussfolgerung)
-- [2. Deadlock](#2-deadlock)
-  - [2.1. Lockmanager / Deadlock Monitor](#21-lockmanager--deadlock-monitor)
-  - [2.2. Strategien zur Vermeidung](#22-strategien-zur-vermeidung)
-  - [2.3. Beispiel Deadlock in der Bibliothek](#23-beispiel-deadlock-in-der-bibliothek)
-- [3. Aufgaben](#3-aufgaben)
-  - [3.1. Gruppenarbeit Transaktionen / Isolationslevel / Deadlock](#31-gruppenarbeit-transaktionen--isolationslevel--deadlock)
-  - [3.2. Transaktionen (Schulverwaltung)](#32-transaktionen-schulverwaltung)
+  - [1.2. BEGIN TRAN](#12-begin-tran)
+  - [1.3. COMMIT / ROLLBACK](#13-commit--rollback)
+  - [1.4. Transaktionsabbrüche](#14-transaktionsabbrüche)
+  - [1.5. ROLLBACK](#15-rollback)
+  - [1.6. Dauer einer Transaktion](#16-dauer-einer-transaktion)
+  - [1.7. Beispiel einer Transaktion](#17-beispiel-einer-transaktion)
+  - [1.8. Fazit](#18-fazit)
+- [2. LOCK-Mechanismen](#2-lock-mechanismen)
+- [3. Isolations Levels](#3-isolations-levels)
+  - [3.1. Fazit](#31-fazit)
+  - [3.2. Probleme im Mehrbenutzerbetrieb](#32-probleme-im-mehrbenutzerbetrieb)
+- [4. Konzepte](#4-konzepte)
+  - [4.1. Pessimistische Verfahren](#41-pessimistische-verfahren)
+  - [4.2. Optimistische Verfahren](#42-optimistische-verfahren)
+  - [4.3. Vergleich](#43-vergleich)
+  - [4.4. Zusammenfassung](#44-zusammenfassung)
+- [5. Transaction Log](#5-transaction-log)
+  - [5.1. Vorgehen](#51-vorgehen)
+    - [5.1.1. Mirroring](#511-mirroring)
+    - [5.1.2. Schlussfolgerung](#512-schlussfolgerung)
+- [6. Deadlock](#6-deadlock)
+  - [6.1. Lockmanager / Deadlock Monitor](#61-lockmanager--deadlock-monitor)
+  - [6.2. Strategien zur Vermeidung](#62-strategien-zur-vermeidung)
+  - [6.3. Beispiel Deadlock in der Bibliothek](#63-beispiel-deadlock-in-der-bibliothek)
+- [7. Aufgaben](#7-aufgaben)
+  - [7.1. Gruppenarbeit Transaktionen / Isolationslevel / Deadlock](#71-gruppenarbeit-transaktionen--isolationslevel--deadlock)
+  - [7.2. Transaktionen (Schulverwaltung)](#72-transaktionen-schulverwaltung)
 
 </br>
 
 # 1. SQL-Transaktionen
 
-![Übersicht](./x_gitres/transaction-overview.png)
+![Übersicht](./x_gitres/sql-transaction.jpg)
 
 Das bisher Gesagte reicht im Wesentlichen aus, wenn wir eine Datenbank auf einem Einzelplatz-rechner betreiben. In betrieblichen Anwendungen ist jedoch davon auszugehen, dass die Daten unternehmensweit organisiert sind und die Nutzer Zugriff über ein lokales Netzwerk haben.
 
@@ -46,7 +49,9 @@ Das bisher Gesagte reicht im Wesentlichen aus, wenn wir eine Datenbank auf einem
 Sobald mehrere Benutzer **gleichzeitig** auf dieselben Datenbestände zugreifen, müssen spezielle Massnahmen getroffen werden, um Probleme wie Inkonsistenzen oder Deadlocks zu vermeiden.
 In Verarbeitungen werden meist mehrere Datensätze verändert; dabei lassen sich oft Sequenzen identifizieren, die entweder insgesamt korrekt abgeschlossen werden müssen oder sich überhaupt nicht im Datenbestand niederschlagen dürfen. Um dies sicherzustellen, werden derartig zusammengehörige Datenmanipulationen zu Transaktionen zusammengefasst
 
-Eine Transaktion hat 4 wesentliche Eigenschaften:
+Eine Transaktion hat 4 wesentliche Eigenschaften (ACID):
+
+![ACID](./x_gitres/transaction-overview.png)
 
 ### 1.1.1. Atomarität
 
@@ -64,15 +69,29 @@ Das Prinzip der Isolation verlangt, dass gleichzeitig ablaufende Transaktionen d
 
 Bei Programmfehlern, Systemabbrüchen oder Fehlern auf dem Speichermedium **garantiert** die Dauerhaftigkeit die Wirkung einer korrekt abgeschlossenen Transaktion. Alle mit commit abgeschlossenen Transaktionen müssen auch nach einem Systemabbruch auf der Harddisk `verewigt` sein. Die Transaktion bildet eine Einheit für eine Wiederherstellung ( Recovery ).
 
-## 1.2. COMMIT / ROLLBACK
+## 1.2. BEGIN TRAN
+
+**BEGIN TRAN** und die Sicherheit ist mit dir
+Eben mal eine kleine `UPDATE`-Operation an zwei Datensätzen angestossen – und plötzlich sind alle **1.2 Millionen** Records betroffen. Kalter Schweiss. Zitternde Finger.
+> Dann hilft nur noch das leise Gebet: `ROLLBACK`. Genau das ist so ein Moment, für den Transaktionen erfunden wurden.
+
+Jedes `BEGIN TRAN`-Kommando erhöht den Transactions Level um 1 – das wird später für COMMIT und ROLLBACK wichtig.
+
+Jede Änderung, jedes `UPDATE`, jedes `DELETE` wird notiert – im **Transaktionsprotokoll** (Transaction Log), dem Tagebuch der Wahrheit. Dort steht später minutiös, was alles versucht wurde.
+
+## 1.3. COMMIT / ROLLBACK
 
 ![COMMIT-ROLLBACK](./x_gitres/commit-rollback.png)
 
 Eine **Transaktion** wird zu einem bestimmten Zeitpunkt mit `BEGIN TRANSACTION` explizit begonnen und wird am Ende mit `COMMIT TRANSACTION` abgeschlossen oder mit `ROLLBACK TRANSACTION` zurückgesetzt.
 
+`COMMIT` - Es ist wie das Unterschreiben eines Vertrags, nachdem man das Kleingedruckte zu spät gelesen hat. Der Commit ist **endgültig**.
+
+`ROLLBACK` – wie ein verzweifeltes Storno an der Supermarktkasse, kurz bevor der Kassenzettel gedruckt wird. Ein Zurück zum Ausgangspunkt. Auch wird dabei der Transactions Level auf 0 heruntergesetzt.
+
 Etliche DBMS, die für den PC verfügbar sind, enthalten keine Mechanismen für die Transaktion. Dieses Fehlen der sehr komplizierten Mechanismen ist u.a. der Grund für den relativ tiefen Preis dieser Systeme. Solche Systeme sind daher nur für den Einbenutzerbetrieb zu verwenden. Bei der Auswahl eines DBMS ist auf diesen Punkt besonders Wert zu legen.
 
-## 1.3. Transaktionsabbrüche
+## 1.4. Transaktionsabbrüche
 
 In grossen DBS, bei denen mehrere hundert Transaktionen pro Sekunde ausgeführt werden, sind Transaktionsabbrüche an der Tagesordnung. Solche Abbrüche sind entweder lokaler Natur, wenn nur eine Transaktion betroffen ist, oder sie sind global, wenn mehrere Transaktionen betroffen sind.
 
@@ -88,11 +107,11 @@ In grossen DBS, bei denen mehrere hundert Transaktionen pro Sekunde ausgeführt 
 
 Eine Transaktion wird durch ein `ROLLBACK` zurückgesetzt (ungeschehen gemacht).
 
-## 1.4. ROLLBACK
+## 1.5. ROLLBACK
 
 Technisch liegt dieser Möglichkeit eine zeitweise Duplizierung der Daten zugrunde. Alle Tupel werden vor der Änderung in eine **'Before-Image-Datei'** kopiert. Aus dieser werden sie bei einem Rollback in die Datenbank zurück kopiert.
 
-## 1.5. Dauer einer Transaktion
+## 1.6. Dauer einer Transaktion
 
 Eine Transaktion hat solange Bestand wie:
 
@@ -115,7 +134,7 @@ Eine Transaktion hat solange Bestand wie:
 - BEGIN TRANSACTION
 - COMMIT / ROLLBACK TRANSACTION
 
-## 1.6. Beispiel einer Transaktion
+## 1.7. Beispiel einer Transaktion
 
 ```sql
 -- 1. Vorbereitung: Eine kleine Tabelle für Kontostände
@@ -171,11 +190,15 @@ SELECT * FROM Konten;
 - `COMMIT TRANSACTION`: Bestätigt alle Änderungen seit dem Start. Die Daten sind nun dauerhaft und für alle anderen Benutzer sichtbar gespeichert.
 - `ROLLBACK TRANSACTION`: Setzt die Daten exakt auf den Zustand vor dem BEGIN zurück. Das ist Ihre "Rettungstaste", wenn mitten im Prozess ein Fehler auftritt (z. B. Stromausfall, Constraint-Verletzung oder Logikfehler).
 
+## 1.8. Fazit
+
+**Transaktionen sind wie Beziehungen:** Sie beginnen mit Hoffnung, verlaufen chaotisch und enden entweder glücklich oder mit einem Rollback. Sie sind der Versuch, Ordnung in ein chaotisches Universum zu bringen – die Illusion, man könne alle Änderungen kontrollieren.
+
 ---
 
 </br>
 
-## 1.7. LOCK-Mechanismen
+# 2. LOCK-Mechanismen
 
 ![Übersicht](./x_gitres/lock-mechanismen.png)
 
@@ -191,7 +214,7 @@ Um dies zu gewährleisten, müssen auch lesende Transaktionen Daten locken. Aus 
 
 </br>
 
-## 1.8. Isolations Levels
+# 3. Isolations Levels
 
 ![Übersicht](./x_gitres/isolation-levels.png)
 
@@ -232,24 +255,35 @@ sie in Kauf. In konkurrierenden Transaktionen können folgende Phänomene auftre
 
 - Commit muss vor Lesevorgang nicht ausgeführt sein.
 - Niedrigste Stufe bei den Transaktionen nur soweit isoliert, dass sichergestellt ist, dass keine physisch beschädigten Daten gelesen werden.
+- Jeder darf alles sehen, auch wenn es noch gar nicht feststeht. „**Dirty Reads**“ nennt man das.
+- romantisch ausgedrückt: Man teilt Gefühle, bevor man sich sicher ist. Schnell, aufregend, aber gefährlich.
 
 **Read Committed:**
 
 - Commit muss vor Lesevorgang ausgeführt sein
 - Standardstufe von SQL Server
+- Man sieht nur, was offiziell bestätigt ist. Kein Blick auf halb fertige Daten, keine Gerüchteküche
 
 **Repeatable Read:**
 
 - Ermöglicht dieselben Daten wiederholt zu lesen und stellt sicher, dass keine andere Transaktion diese Daten aktualisieren kann, bis das Lesen abgeschlossen ist. Wenn die gleiche Zeile zweimal oder mehrmals in einer Transaktion abgefragt wird, liefern die Abfragen immer die gleichen Ergebnisse zurück.
-
+- Einmal gelesen bleibt gelesen. Niemand darf dazwischenfunken!
+- Das ist schön – bis jemand merkt, dass dadurch alle blockiert sind.
+  
 **Serializable:**
 
 - Höchste Stufe
 - Transaktionen werden vollständig voneinander getrennt.
+- Der Isolation Level für Kontrollfreaks
+- Hier wird alles nacheinander abgewickelt, kein Parallelismus, keine Überraschungen. Das System ist sicher, aber langsam!
+
+## 3.1. Fazit
+
+Isolation Levels sind damit weniger technische Einstellungen als Charakterfragen. Wer zu viel Vertrauen gibt, riskiert Chaos. Wer zu wenig gibt, erstickt am Overhead.
 
 ---
 
-## 1.9. Probleme im Mehrbenutzerbetrieb
+## 3.2. Probleme im Mehrbenutzerbetrieb
 
 **Lost Update:**
 
@@ -291,11 +325,11 @@ Ein Phantom ist ein Lesevorgang bzgl. einer Datenmenge, die einer bestimmten Bed
 
 </br>
 
-## 1.10. Konzepte
+# 4. Konzepte
 
 Man unterscheidet hierbei zwei grundlegende Philosophien: **Pessimismus** und **Optimismus**.
 
-### 1.10.1. Pessimistische Verfahren
+## 4.1. Pessimistische Verfahren
 
 **Pessimistische Verfahren** sichern Transaktionen ab, indem sie durch Sperren die zu lesenden oder zu verändernden Daten vor andern Zugriffen schützen. Dabei werden zu Beginn der Transaktion alle Sperren gesetzt und diese am Ende der Transaktion wieder abgebaut. Transaktionen, die auf Daten zugreifen wollen, welche durch eine andere Transaktion gesperrt wurden, müssen warten, bis die Daten wieder freigegeben werden. Bei Transaktionen, die Benutzereingriffe erwarten, um beispielsweise Entscheidungen zu treffen, wird von diesem Verfahren abgeraten, da der Benutzer unbewusst andere Benutzer stundenlang blockieren kann.
 
@@ -317,7 +351,7 @@ Das System geht davon aus, dass Konflikte sehr wahrscheinlich sind. Sobald ein B
 
 > **Motto: "Sicher ist sicher – ich vertraue niemandem."**
 
-### 1.10.2. Optimistische Verfahren
+## 4.2. Optimistische Verfahren
 
 Bei optimistischen Verfahren geht man davon aus, dass Konflikte konkurrierender Transaktionen selten vorkommen. Daher wird wo immer möglich auf Sperren verzichtet, um so die Parallelität zu erhöhen und die Performance des Systems zu verbessern. Das Verfahren durchläuft 3 Phasen:
 
@@ -338,7 +372,7 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
 
 > **Motto: "Es wird schon gutgehen – wir prüfen am Ende."**
 
-### 1.10.3. Vergleich
+## 4.3. Vergleich
 
 | **Merkmal**         | **Pessimistisch**               | **Optimistisch**                             |
 | ------------------- | ------------------------------- | -------------------------------------------- |
@@ -348,7 +382,7 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
 | **Datenintegrität** | Sehr hoch                       | Hoch (erfordert aber Fehlerhandling im Code) |
 | **Einsatzgebiet**   | Buchhaltung, kritische Bestände | Web-Apps, soziale Medien, CMS                |
 
-### 1.10.4. Zusammenfassung
+## 4.4. Zusammenfassung
 
 - **Pessimistisch** ist wie eine Einzelkabine beim Umkleiden: Solange ich drin bin, kommt niemand rein. Punkt.
 - **Optimistisch** ist wie ein Google-Doc: Jeder schreibt rein. Wenn zwei exakt dieselbe Zeile zur exakt gleichen Millisekunde ändern, sagt das System: "Halt, da war jemand schneller, bitte prüf deine Änderungen nochmal."
@@ -357,7 +391,7 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
 
 </br>
 
-## 1.11. Transaction Log
+# 5. Transaction Log
 
 ![Übersicht](./x_gitres/transaction-log.png)
 
@@ -366,7 +400,7 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
 **Location:** Das Transaction log muss zwingend auf einem physisch anderen Speichermedium sein als der Datenbestand.
 **Checkpoint:** Das Lesen und vor allem das Schreiben einer Harddisk ist langsam. Das heisst, diese HD-Zugriffe müssen optimiert sein. Darum wird nicht nach jeder Transaktion diese auch sofort auf den Datenträger geschrieben. Es wird nur periodisch, zu bestimmten Zeitpunkten – dies ist der Checkpoint – der gesamte Datencache en bloc auf die HD zurückgeschrieben.
 
-### 1.11.1. Vorgehen
+## 5.1. Vorgehen
 
 1. Datensatz wird von der HD ins RAM gelesen.
 2. Datensatz wird als `Before Image` ins Transaction log geschrieben.
@@ -391,11 +425,11 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
 - Für die Transaktionen 2 und 4 wurde der Commit nach dem Checkpoint ausgeführt, d.h. sie haben keinen Prüfpunkt im Transaction log. Diese Transaktionen müssen beim Rebooten der DB anhand des Transaction Logs wieder hergestellt werden ( Rollforward ).
 - Die Transaktionen 3 und 5 haben kein After Image in Transaction log, d.h. das DBS nimmt beim Rebooten einen Rollback vor.
 
-### 1.11.2. Mirroring
+### 5.1.1. Mirroring
 
 Man spricht von einer Spiegelung einer DB, wenn zwei separate Kopien des Datenbestandes auf zwei verschiedenen nichtflüchtigen Speichermedien verwaltet werden. Jedes Mal, wenn eine Kopie geändert wird, wird gleichzeitig die andere Kopie geändert. Auf diese Weise verlieren Sie – falls eine Ihrer Festplatten crashed – nicht nur keine Daten, sondern auch keine Zeit, weil die Verarbeitung mit Hilfe der Spiegelplatte fortgesetzt werden kann.
 
-### 1.11.3. Schlussfolgerung
+### 5.1.2. Schlussfolgerung
 
 Die Verfahren zur Wiederherstellung einer DB nach einem Absturz, wie mit Hilfe eines Transaction Logs sind wirksam, aber teuer. Die Spiegelung ist sogar noch teurer. Bei Datenbankanwendungen, von denen das Überleben eines Unternehmens abhängt, geht man davon aus, dass die Verbesserung der Zuverlässigkeit, die mit diesen Techniken erreicht werden, die Kosten wert sind.
 Bei preiswerten DBS wie z.B. Access werden Sie solche Funktionen jedoch nicht finden.
@@ -404,15 +438,17 @@ Bei preiswerten DBS wie z.B. Access werden Sie solche Funktionen jedoch nicht fi
 
 </br>
 
-# 2. Deadlock
+# 6. Deadlock
 
 Ein **Deadlock** (zu Deutsch: Verklemmung) ist eine Sackgasse in einem Mehrbenutzersystem. Er tritt auf, wenn zwei oder mehr Transaktionen **gegenseitig** auf Ressourcen warten, die von der jeweils anderen Transaktion gesperrt sind.
 
 Stellen Sie sich das wie einen Kreisverkehr vor, in dem vier Autos gleichzeitig einfahren und jeder darauf wartet, dass der jeweils andere ihm Vorrang gewährt – niemand kann sich mehr bewegen.
 
+**Transaktion A will Datensatz X**, den Transaktion B hält, und **Transaktion B will Datensatz Y**, den A schon gesperrt hat. Beide warten, beide hoffen, **keiner bewegt sich** – eine klassische **Beziehungskrise**. SQL Server greift dann als **Paartherapeut** ein: „Einer von euch muss loslassen.“ Und zack, eine Transaktion wird abgebrochen. „**Deadlock victim**“ – das klingt tragisch, ist aber manchmal die beste Lösung.
+
 ![XSelect](./x_gitres/deadlock-xselect.png)
 
-## 2.1. Lockmanager / Deadlock Monitor
+## 6.1. Lockmanager / Deadlock Monitor
 
 Da ein Deadlock ein logischer Stillstand ist, besitzt der SQL Server einen speziellen Hintergrundprozess: den **Deadlock Monitor**.
 
@@ -423,7 +459,7 @@ Da ein Deadlock ein logischer Stillstand ist, besitzt der SQL Server einen spezi
 
 ![Lockmanager](./x_gitres/deadlock-lockmanager.png)
 
-## 2.2. Strategien zur Vermeidung
+## 6.2. Strategien zur Vermeidung
 
 Ein Deadlock ist kein Datenbankfehler, sondern meist ein Designproblem der Anwendung.
 So verhindert man sie:
@@ -435,7 +471,7 @@ So verhindert man sie:
 
 ---
 
-## 2.3. Beispiel Deadlock in der Bibliothek
+## 6.3. Beispiel Deadlock in der Bibliothek
 
 Herr T1 leiht sich in der Bibliothek ein Buch über Schrittmotoren. Der Titel dieses Buches ist F1. Beim Lesen dieses Buches findet T1 plötzlich den Hinweis, dass Schrittmotoren unter anderem auch in elektrischen Schreibmaschinen Verwendung finden. Da sich T1 sehr für den Einsatz von Schrittmotoren interessiert, geht er erneut in die Bibliothek mit der Absicht, sich ein Buch über elektrische Schreibmaschinen zu leihen. Dort wird ihm das Buch F2 empfohlen, mit dem Hinweis, dass dieses Buch vor kurzem erst an Herrn T2 verliehen wurde. Da ihm diese Problematik doch sehr am Herzen liegt, beschliesst T1, sein Buch über Schrittmotoren so lange zur Seite zu legen, bis er das Buch F2 über elektrische Schreibmaschinen ausleihen kann.
 
@@ -447,9 +483,9 @@ Unterdessen liest T2 sein Buch. Plötzlich findet er einen Hinweis auf sogenannt
 
 </br>
 
-# 3. Aufgaben
+# 7. Aufgaben
 
-## 3.1. Gruppenarbeit Transaktionen / Isolationslevel / Deadlock
+## 7.1. Gruppenarbeit Transaktionen / Isolationslevel / Deadlock
 
 | **Vorgabe**             | **Beschreibung**                                                                                                      |
 | :---------------------- | :-------------------------------------------------------------------------------------------------------------------- |
@@ -491,7 +527,7 @@ Deadlocks bzw. Verklemmungen können in einer Datenbank nicht ausgeschlossen wer
 
 ---
 
-## 3.2. Transaktionen (Schulverwaltung)
+## 7.2. Transaktionen (Schulverwaltung)
 
 | **Vorgabe**             | **Beschreibung**                                                                                                   |
 | :---------------------- | :----------------------------------------------------------------------------------------------------------------- |

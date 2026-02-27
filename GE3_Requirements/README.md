@@ -24,7 +24,7 @@
 ## 1.2. SQL-Server Management Studio
 
 - ![SQL-Server Management Studio](./x_gitres/download-sql-server-management-studio.jpg)
-- [Download SQL-Server Management Studio](https://learn.microsoft.com/de-de/ssms/install/install))
+- [Download SQL-Server Management Studio](https://learn.microsoft.com/de-de/ssms/install/install)
 
 </br>
 
