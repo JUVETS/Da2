@@ -238,3 +238,8 @@ class BlobLesen
 5. Füge dem Konsolen-Projekt das erforderliche NuGet Paket hinzu. (Install NuGet package: `Microsoft.Data.SqlClient`)
 6. Schreibe eine Methoden, die ein Dokument in die Datenbank einfügt.
 7. Schreibe eine Methode, die ein Dokument aus der Datenbank exportiert.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

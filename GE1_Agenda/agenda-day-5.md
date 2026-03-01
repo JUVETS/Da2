@@ -38,3 +38,8 @@
 - [x] Sie sind in der Lage in **SQL Views** zu erstellen und zu prüfen.
 - [x] Sie können die Vor- und Nachteile von **materialisierten** Views erläutern.
 - [x] Sie können Views basierte Abfragen erstellen
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

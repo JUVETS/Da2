@@ -122,3 +122,8 @@ Bevor einen Cursor eingesetzt wird, zwingend prüfen:
 - Ermittele in der Funktion die Bezeichnungen mittels einer satzweisen Verarbeitung in einer Schleife (`CURSOR`).
 
 Beispiel Aufruf: `select dbo ufnGetListOfCourse();`
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

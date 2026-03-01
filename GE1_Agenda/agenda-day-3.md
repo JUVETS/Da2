@@ -32,3 +32,8 @@
 - [x] Sie können in SQL korrekte Transaktionen programmieren.
 - [x] Sie können den Recovery Prozess in Zusammenhang mit offenen Transaktionen erläutern.
 - [x] Sie kennen die SQL-Befehle **begin transaction, commit u. rollback** und können diese korrekt programmieren.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

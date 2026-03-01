@@ -314,3 +314,8 @@ getdate()
 
 - Wenn der Anwender einen Datensatz in der `Studenten`-Tabelle ändert, soll automatisch in einem Feld (z.B. `letzte_bearbeitung (DateTime)`) das Änderungsdatum gesetzt werden.
 - Wie lässt sich diese Anforderung lösen?
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

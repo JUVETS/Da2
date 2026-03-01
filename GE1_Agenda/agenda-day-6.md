@@ -46,3 +46,8 @@
 - [x] Sie können die Einsatzbereiche, Sinn u. Zweck von Datenbank Prozeduren erläutern.
 - [x] Sie können Vor- und Nachteile von Datenbank Prozeduren erläutern.
 - [x] Sie können die Basiselemente von T-SQL (Variablen, Ablaufsteuerungselemente) implementieren.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

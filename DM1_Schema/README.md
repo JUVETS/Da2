@@ -491,3 +491,8 @@ Preis DECIMAL(8,2)  NOT NULL
 **A9:** Stelle sicher, dass der Blumenpreis immer > 0 sein muss.
 
 **A10:** Entferne die gesamte Tabelle `BLUME`, inklusive Metadaten.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

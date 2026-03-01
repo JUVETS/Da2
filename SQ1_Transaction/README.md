@@ -579,3 +579,8 @@ ROLLBACK [WORK]
 
 - A, B) Versuchen Sie eine Deadlock Situation herzustellen.
 - Beenden Sie Ihre Transaktion mit Rollback.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

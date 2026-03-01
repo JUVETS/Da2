@@ -722,3 +722,8 @@ Erstellen Sie die Tabellenwertfunktion `ufnMemberOfStudy()`, welche alle Student
 -- Beispiel Aufruf: 
 select * from dbo.ufnMemberOfStudy (1);
 ```
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

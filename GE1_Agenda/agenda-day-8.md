@@ -38,3 +38,8 @@
 - [x] Sie können die Einsatzbereiche, Sinn u. Zweck von benutzerdefinierten **Funktionen** erläutern.
 - [x] Sie kennen die Einsatzmöglichkeiten der verschiedenen Datenbank **Triggers (after, instead of)**
 - [x] Sie können eine **Trigger-Logik** in einer Datenbank erstellen, ändern, löschen.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

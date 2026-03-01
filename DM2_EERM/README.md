@@ -398,3 +398,8 @@ Der Nutzer einer Datenbank wünscht sich aber, dass er diese Erweiterung selbst 
 4. Implementieren Sie die Tabellen und Beziehungen komplett in SQL. Erstellen Sie hierzu eine SQL Skriptdatei.
 5. Schreiben Sie die SQL Befehle, um mindestens zwei Gerätetypen mit unterschiedlichen Merkmalen in die Datenbank einzufügen.
 6. Erstellen Sie eine Abfrage, welche die Merkmale eines Gerätes auflistet.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

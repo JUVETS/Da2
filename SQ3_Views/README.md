@@ -333,3 +333,8 @@ Löse in der Schulverwaltung die nachfolgend aufgeführten View-Aufgaben.
 - Erstelle einen View, der alle Kurse der BWL-Studenten (Fachrichtung = "BWL") listet
 - Name: *vw_Kurse_BWL_Studenten*
 - Spalten: *KursNr, KursBezeichnung, StudentNr, StudentName, StudentVorname*
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

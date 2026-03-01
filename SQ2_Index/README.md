@@ -401,3 +401,8 @@ Schreibe den SQL-Befehle, um den Index IX_StudentNachnameVorname in der Student-
 ```sql
 DROP INDEX index_name ON tab_name
 ```
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

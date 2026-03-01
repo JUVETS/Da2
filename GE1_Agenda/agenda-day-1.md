@@ -46,3 +46,8 @@
 - [x] Ein Datenbankmodell nach Vorgabe per SQL-Befehle auf einem Datenbanksystem zu implementieren
 - [x] Initial-Daten in eine Datenbanktabelle einzufügen und auszuwerten
 - [x] Das Datenbankmodell zu testen
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

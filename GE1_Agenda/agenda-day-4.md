@@ -49,3 +49,8 @@
 - [x] Sie sind in der Lage in SQL Indizes zu erstellen und zu prüfen.
 - [x] Sie können zu einer Datenbankabfrage einen Ausführungsplan erstellen.
 - [x] Sie können den Ausführungsplan analysieren und Vorschläge zur Beschleunigung (Tuning) ableiten.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

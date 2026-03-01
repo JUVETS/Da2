@@ -113,3 +113,8 @@ Gehe dabei wie folgt vor:
 10. Fertig!
     1. Du wirst zu deinem GitHub-Dashboard weitergeleitet.
 11. Trage nun dein GitHub Benutzername im Class Notebook (Teams) bei Kursnotizen ein.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](..\license.md) file for details.

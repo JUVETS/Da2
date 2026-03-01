@@ -44,3 +44,9 @@
    2. Kennt die prozedurale Elemente der Datenbank und kann diese korrekt einsetzen.
 5. Aufgrund geänderter Anforderungen das Datenbankschema anpassen
    1. Kennt das schrittweise Vorgehen bei der Änderung eines Datenbankschemas und kann an Beispielen aufzeigen, welche Auswirkungen die Änderungen auf einen bestehenden Datenbestand haben können.
+
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](license.md) file for details.
