@@ -15,7 +15,8 @@
     - [1.4.3. Primary Key](#143-primary-key)
     - [1.4.4. Foreign Key](#144-foreign-key)
     - [1.4.5. Unique](#145-unique)
-    - [1.4.6. Default](#146-default)
+    - [1.4.6. Check](#146-check)
+    - [1.4.7. Default](#147-default)
   - [1.5. Daten-Integrität](#15-daten-integrität)
     - [1.5.1. Domänen-Integrität](#151-domänen-integrität)
     - [1.5.2. Entitätsintegrität](#152-entitätsintegrität)
@@ -259,7 +260,15 @@ Sie **verhindern**, dass ungültige, widersprüchliche oder unvollständige Date
 - Beispiel
   - `CREATE TABLE Angebot (..., CONSTRAINT U_code UNIQUE (lfr_code, art_code))`
 
-### 1.4.6. Default
+### 1.4.6. Check
+
+- Ein **Check Constraint** bestimmt den **Wertebereich**, der eingegeben werden darf.
+- **Verstärkt** die Integrität des Datentyps durch Limitierung der möglichen Werte.
+- Wird jedes Mal kontrolliert, wenn ein `INSERT` oder `UPDATE` gemacht wird.
+- Beispiel
+  - `CREATE TABLE Adult( ..., CONSTRAINT c_alter CHECK (alter between 1 and 120)`
+
+### 1.4.7. Default
 
 - Der Default Constraint füllt einen Wert in ein Feld ein, wenn das Feld im INSERT-Befehl ausgelassen wird.
 - Beispiel
