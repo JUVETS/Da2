@@ -1,6 +1,6 @@
-|                             |                          |                               |
-| --------------------------- | ------------------------ | ----------------------------- |
-| **Techniker HF Informatik** | **Kurs Datenbanken Da2** | ![logo](../x_gitres/logo.png) |
+|                             |                     |                               |
+| --------------------------- | ------------------- | ----------------------------- |
+| **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](../x_gitres/logo.png) |
 
 - [1. Transact SQL (T-SQL)](#1-transact-sql-t-sql)
   - [1.1. T-SQL Grundlagen](#11-t-sql-grundlagen)

@@ -1,6 +1,6 @@
-|                             |                          |                                   |
-| --------------------------- | ------------------------ | --------------------------------- |
-| **Techniker HF Informatik** | **Kurs Datenbanken Da2** | ![IPSO Logo](./x_gitres/logo.png) |
+|                             |                     |                                   |
+| --------------------------- | ------------------- | --------------------------------- |
+| **Techniker HF Informatik** | **Datenbanken Da2** | ![IPSO Logo](./x_gitres/logo.png) |
 
 - [1. Erweiterte Modellierungsvarianten EERM](#1-erweiterte-modellierungsvarianten-eerm)
   - [1.1. Verbundinstrumente](#11-verbundinstrumente)
@@ -216,7 +216,7 @@ Es besteht meist aus drei Hauptkomponenten:
 ### 1.7.2. Nachteile
 
 - **Komplexität:** Abfragen (SQL Joins) werden sehr kompliziert und unübersichtlich.
-- **Performance:** Da für jeden Attributwert eine neue Zeile gelesen werden muss, sind solche Modelle bei großen Datenmengen oft langsam.
+- **Performance:** Da für jeden Attributwert eine neue Zeile gelesen werden muss, sind solche Modelle bei grossen Datenmengen oft langsam.
 - **Verlust von Datentypen:** Oft werden alle Werte als VARCHAR gespeichert, was die Typsicherheit (Domain-Integrität) erschwert.
 
 ### 1.7.3. Einsatzbereich
@@ -284,7 +284,7 @@ Generische Modelle sind ideal für Systeme, bei denen die Eigenschaften der Obje
 **Aufgabe:**
 
 1. Modellieren Sie aus dem ERM-Modell ein Relationen Modell mit den Entity-Mengen, den notwendigen Attributen, Dem Primärschlüssel und den Fremdschlüsseln sowie die Beziehungen zwischen den Entity-Mengen.
-![ERM-Beispiel](./x_gitres/erm-example.png)
+   1. ![ERM-Beispiel](./x_gitres/erm-example.png)
 2. Erfasse min. 2 Kunden u. 2 Dozenten (insert into …).
 3. Erstelle eine Abfrage, welche alle Kunden mit sämtlichen Attributen selektiert.
 4. Erstelle eine Abfrage, welche alle Dozenten mit sämtlichen Attributen selektiert.
@@ -312,7 +312,7 @@ Generische Modelle sind ideal für Systeme, bei denen die Eigenschaften der Obje
 
 Um eine bessere Übersicht über das Angebot eines Warenhauses zu erhalten wurden die Produkte in verschiedene Kategorien hierarchisch, gemäss nachfolgender Aufstellung gegliedert.
 
-- Lebensmittel
+- **Lebensmittel**
   - Getränke
     - Cola
     - Red Bull
@@ -322,7 +322,7 @@ Um eine bessere Übersicht über das Angebot eines Warenhauses zu erhalten wurde
   - Obst
     - Pfirsich
     - Orange
-- Kleidung
+- **Kleidung**
   - Herrenkleidung
   - Damenkleidung
 
@@ -352,7 +352,7 @@ Um eine bessere Übersicht über das Angebot eines Warenhauses zu erhalten wurde
 | **Lösungselemente**     | SQL-Skriptdatei                                                     |
 
 **Teile:**
-Teile sind alle Artikel, Baugruppen oder Materialien, die im Unternehmen benötigt werden. Man unterscheidet nach dem Attribut "Typ": Materialien (Typ=Material) sind Teile, die von Lieferanten hinzugekauft werden. Baugruppen (Typ=Baugruppen) sind Zwischenteile, die gefertigt, aber nicht an Kunden verkauft werden. Artikel (Typ=Artikel) sind schließlich Endprodukte, die an Kunden verkauft werden und außerdem eine Stückliste haben.
+Teile sind alle **Artikel**, **Baugruppen** oder Materialien, die im Unternehmen benötigt werden. Man unterscheidet nach dem Attribut "Typ": **Materialien (Typ=Material)** sind Teile, die von Lieferanten hinzugekauft werden. **Baugruppen (Typ=Baugruppen)** sind Zwischenteile, die gefertigt, aber nicht an Kunden verkauft werden. **Artikel (Typ=Artikel)** sind schliesslich Endprodukte, die an Kunden verkauft werden und ausserdem eine Stückliste haben.
 
 **Struktur:**
 Die Struktur-Entität-Menge stellt die Stückliste dar. Sie beinhaltet, welches Teil in welcher Menge bei der Herstellung eines anderen Teils verwendet wird.
@@ -363,9 +363,9 @@ Die Struktur-Entität-Menge stellt die Stückliste dar. Sie beinhaltet, welches 
 **Aufgabe:**
 
 1. Implementieren Sie das obige Relationen Modell in Ihrer Datenbank. Schreiben Sie hierfür die SQL-Befehle (Tabellen und Beziehungen)
-2. Erfassen Sie die Teile und Strukturdaten. Laden Sie die Teiledaten eines Bike Shops (TEILEINSERT.SQL)
-3. Erstellen Sie für folgende Abfragen die SELECT Anweisung
-   1. Welche Bestandteile hat der Artikel mit der Teile Nr. (TNr) = 60
+2. Erfassen Sie die Teile und Strukturdaten. Laden Sie die Teiledaten eines Bike Shops (`TEILEINSERT.SQL`)
+3. Erstellen Sie für folgende Abfragen die `SELECT` Anweisung
+   1. Welche Bestandteile hat der Artikel mit der Teile Nr. **(TNr) = 60**
    2. Die in der Baugruppe enthaltenen Teile werden aufgelöst (2 stufig)
    3. Die in der Baugruppe enthaltenen Teile werden aufgelöst (3 stufig)
 
@@ -386,15 +386,15 @@ Die Struktur-Entität-Menge stellt die Stückliste dar. Sie beinhaltet, welches 
 | **Zeitbedarf**          | 50 min                                                                        |
 | **Lösungselemente**     | Datenmodell / SQL-Skript                                                      |
 
-Eine Maschinenbauunternehmung setzt in der Produktion verschiedenen Fertigungshilfsmittel (Geräte) ein. Ein solches "Gerät" kann sowohl ein **Messgerät**, ein **Roboter** als auch ein **Kran** oder irgendetwas anderes sein. Will man jetzt für ein solches Unternehmen eine Datenbank für die Verwaltung dieser Fertigungshilfsmitteln entwickeln, so müsste man eigentlich für jedes diesen unterschiedlichen Betriebsmitteln (so wollen wir die "Geräte" ab jetzt nennen) eine extra Tabelle anlegen. Kommt dann ein neue Betriebsmittel hinzu, muss wieder eine neue Tabelle angelegt werden. Das Problem ist offensichtlich, bei einem neuen Gerätetyp muss die Datenbank Entwicklungsabteilung aktiv werden, um die Struktur in der Datenbank einzubauen.
-Der Nutzer einer Datenbank wünscht sich aber, dass er diese Erweiterung selbst und ohne Programmierung vornehmen werden kann. Er verlangt ein allgemein gültiges bzw. universelles Datenmodell, um alle möglichen Geräte verwalten zu können.
+Eine Maschinenbauunternehmung setzt in der Produktion verschiedenen Fertigungshilfsmittel (Geräte) ein. Ein solches "**Gerät**" kann sowohl ein **Messgerät**, ein **Roboter** als auch ein **Kran** oder irgendetwas anderes sein. Will man jetzt für ein solches Unternehmen eine Datenbank für die Verwaltung dieser Fertigungshilfsmitteln entwickeln, so müsste man eigentlich für jedes diesen unterschiedlichen Betriebsmitteln (so wollen wir die "**Geräte**" ab jetzt nennen) eine extra **Tabelle** anlegen. Kommt dann ein neue Betriebsmittel hinzu, muss wieder eine neue Tabelle angelegt werden. Das Problem ist offensichtlich, bei einem neuen Gerätetyp muss die Datenbank Entwicklungsabteilung aktiv werden, um die Struktur in der Datenbank einzubauen.
+Der Nutzer einer Datenbank wünscht sich aber, dass er diese Erweiterung selbst und ohne Programmierung vornehmen werden kann. Er verlangt ein allgemein gültiges bzw. **universelles Datenmodell**, um alle möglichen Geräte verwalten zu können.
 
 **Aufgabe:**
 
-1. Überlegen Sie sich wie diese Anforderung umgesetzt werden kann. D.h. es darf weder eine Tabelle "Messgerät", noch eine Tabelle "Roboter", noch eine Tabelle "Kran" vorkommen. Stattdessen sollen "universelle" (=verallgemeinerte) Tabellen Anwendung finden.
-2. Überlegen Sie sich, wie die spezifischen Eigenschaften (Merkmale), der Roboter hat z.B. einen Arbeitsbereich, das Messgerät ein Nennmass, der Kran eine Nutzlast in der Datenbank gespeichert werden können.
+1. Überlegen Sie sich wie diese Anforderung umgesetzt werden kann. D.h. es darf weder eine Tabelle "**Messgerät**", noch eine Tabelle "**Roboter**", noch eine Tabelle "**Kran**" vorkommen. Stattdessen sollen "universelle" (=verallgemeinerte) Tabellen Anwendung finden.
+2. Überlegen Sie sich, wie die **spezifischen Eigenschaften (Merkmale)**, der **Roboter** hat z.B. einen Arbeitsbereich, das Messgerät ein Nennmass, der **Kran** eine Nutzlast in der Datenbank gespeichert werden können.
 3. Stellen Sie Ihren Lösungsansatz in einem Relationen Modell dar.
-![ERM-Beispiel](./x_gitres/erm-example.png)
+   1. ![ERM-Beispiel](./x_gitres/erm-example.png)
 4. Implementieren Sie die Tabellen und Beziehungen komplett in SQL. Erstellen Sie hierzu eine SQL Skriptdatei.
 5. Schreiben Sie die SQL Befehle, um mindestens zwei Gerätetypen mit unterschiedlichen Merkmalen in die Datenbank einzufügen.
 6. Erstellen Sie eine Abfrage, welche die Merkmale eines Gerätes auflistet.

@@ -1,6 +1,6 @@
-|                             |                          |                                 |
-| --------------------------- | ------------------------ | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Datenbanken Da2** | ![Logo](./../x_gitres/logo.png) |
+|                             |                     |                                 |
+| --------------------------- | ------------------- | ------------------------------- |
+| **Techniker HF Informatik** | **Datenbanken Da2** | ![Logo](./../x_gitres/logo.png) |
 
 ---
 

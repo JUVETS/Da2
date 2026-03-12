@@ -1,6 +1,6 @@
-|                             |                          |                               |
-| --------------------------- | ------------------------ | ----------------------------- |
-| **Techniker HF Informatik** | **Kurs Datenbanken Da2** | ![Logo](../x_gitres/logo.png) |
+|                             |                     |                               |
+| --------------------------- | ------------------- | ----------------------------- |
+| **Techniker HF Informatik** | **Datenbanken Da2** | ![Logo](../x_gitres/logo.png) |
 
 - [1. Datenmodell / Schema implementieren (Data Definition Language DDL)](#1-datenmodell--schema-implementieren-data-definition-language-ddl)
   - [1.1. Tabelle erstellen](#11-tabelle-erstellen)

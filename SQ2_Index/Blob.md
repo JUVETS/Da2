@@ -1,6 +1,6 @@
-|                                 |                   |                               |
-| ------------------------------- | ----------------- | ----------------------------- |
-| **Informatik Techniker/-in HF** | **Datenbank Da2** | ![Logo](../x_gitres/logo.png) |
+|                             |                   |                               |
+| --------------------------- | ----------------- | ----------------------------- |
+| **Techniker HF Informatik** | **Datenbank Da2** | ![Logo](../x_gitres/logo.png) |
 
 - [1. SQL Binary Large Object (BLOB)](#1-sql-binary-large-object-blob)
   - [1.1. Einführung](#11-einführung)
