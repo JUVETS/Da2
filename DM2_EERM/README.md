@@ -1,6 +1,6 @@
-|                             |                     |                                   |
-| --------------------------- | ------------------- | --------------------------------- |
-| **Techniker HF Informatik** | **Datenbanken Da2** | ![IPSO Logo](./x_gitres/logo.png) |
+|                             |                     |                               |
+| --------------------------- | ------------------- | ----------------------------- |
+| **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](../x_gitres/logo.png) |
 
 - [1. Erweiterte Modellierungsvarianten EERM](#1-erweiterte-modellierungsvarianten-eerm)
   - [1.1. Verbundinstrumente](#11-verbundinstrumente)
