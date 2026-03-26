@@ -55,7 +55,7 @@ Eine Transaktion hat 4 wesentliche Eigenschaften (ACID):
 
 ### 1.1.1. Atomarität
 
-**Atomarität** besagt, dass eine Transaktion eine unteilbare Einheit darstellt. Sie wird entweder komplett durchgeführt oder gar nicht. D.h. Eine Folge von Datenbank Operationen wird komplett oder nicht ausgeführt. Alles oder nichts Prinzip.
+**Atomarität** besagt, dass eine Transaktion eine **unteilbare Einheit** darstellt. Sie wird entweder komplett durchgeführt oder gar nicht. D.h. Eine Folge von Datenbank Operationen wird komplett oder nicht ausgeführt. Alles oder nichts Prinzip.
 
 ### 1.1.2. Konsistenz
 
@@ -63,7 +63,7 @@ Bei Transaktionsende müssen alle **Konsistenzbedingungen** erfüllt sein. Währ
 
 ### 1.1.3. Isolation
 
-Das Prinzip der Isolation verlangt, dass gleichzeitig ablaufende Transaktionen dieselben Resultate wie im Falle einer Einzelbenutzerumgebung erzeugen müssen, sie dürfen sich **nicht gegenseitig** beeinflussen. Die Transaktion bildet so eine Einheit für ihre Serialisierbarkeit. Wird durch Sperrmechanismen realisiert
+Das Prinzip der Isolation verlangt, dass **gleichzeitig ablaufende Transaktionen** dieselben Resultate wie im Falle einer Einzelbenutzerumgebung erzeugen müssen, sie dürfen sich **nicht gegenseitig** beeinflussen. Die Transaktion bildet so eine Einheit für ihre **Serialisierbarkeit**. Wird durch Sperrmechanismen realisiert
 
 ### 1.1.4. Dauerhaftigkeit
 
@@ -73,7 +73,8 @@ Bei Programmfehlern, Systemabbrüchen oder Fehlern auf dem Speichermedium **gara
 
 **BEGIN TRAN** und die Sicherheit ist mit dir
 Eben mal eine kleine `UPDATE`-Operation an zwei Datensätzen angestossen – und plötzlich sind alle **1.2 Millionen** Records betroffen. Kalter Schweiss. Zitternde Finger.
-> Dann hilft nur noch das leise Gebet: `ROLLBACK`. Genau das ist so ein Moment, für den Transaktionen erfunden wurden.
+
+> **Dann hilft nur noch das leise Gebet: `ROLLBACK`. Genau das ist so ein Moment, für den Transaktionen erfunden wurden.**
 
 Jedes `BEGIN TRAN`-Kommando erhöht den Transactions Level um 1 – das wird später für COMMIT und ROLLBACK wichtig.
 
@@ -293,19 +294,19 @@ Ein Lost Update wurde von einem anderen Update überschrieben, und geht somit ve
 
 1. Benutzer A hat "1" addiert, Benutzer B hat "2" addiert
 2. Richtiges Ergebnis 5 + 1 + 2 = 8
-3. Effekt: Die Änderung von Benutzer A wurde überschrieben
+3. **Effekt**: Die Änderung von Benutzer A wurde überschrieben
 
 **Dirty Read:**
-Ein Dirty Read ist ein Lesevorgang, der veränderte Zeilen anderer noch nicht terminierter Transaktionen liest. Es können sogar Zeilen gelesen werden, die nicht existieren oder nie existiert haben. Die Transaktion sieht einen temporären Schnappschuss der Datenbank, der zwar aktuell ist, aber bereits inkonsistent sein kann. Offensichtlich erfasst die Abfrage Ergebnisse einer nicht (mit COMMIT) bestätigten Transaktion und erzeugt dadurch ein falsches Ergebnis.
+Ein **Dirty Read** ist ein Lesevorgang, der veränderte Zeilen anderer noch **nicht terminierter Transaktionen** liest. Es können sogar Zeilen gelesen werden, die nicht existieren oder nie existiert haben. Die Transaktion sieht einen temporären Schnappschuss der Datenbank, der zwar aktuell ist, aber bereits **inkonsistent** sein kann. Offensichtlich erfasst die Abfrage Ergebnisse einer nicht (mit `COMMIT`) bestätigten Transaktion und erzeugt dadurch ein **falsches Ergebnis**.
 
 ![Übersicht](./x_gitres/dirty-read.png)
 
-- Tritt auf, wenn unbestätigte Transaktionen der Transaktion A von einer anderen Transaktion gelesen werden
-- Kann nur vermieden werden, wenn das DBMS verhindert, dass unbestätigte Transaktion berücksichtigt werden
+- Tritt auf, wenn **unbestätigte** Transaktionen der Transaktion A von einer anderen Transaktion gelesen werden
+- Kann nur vermieden werden, wenn das DBMS verhindert, dass **unbestätigte** Transaktion berücksichtigt werden
 
 **Non-Repeatable Read:**
 
-Ein Non-Repetable Read ist ein Lesevorgang, der im Falle von mehrmaligem Lesen zu unterschiedlichen Ergebnissen führt. Innerhalb einer Transaktion führt die mehrfache Ausführung einer Abfrage zu unterschiedlichen Ergebnissen, die durch zwischenzeitliche Änderungen (update) und Löschungen (delete) entstehen. Die einzelnen Abfrageergebnisse sind konsistent, beziehen sich aber auf unterschiedliche Zeitpunkte.
+Ein Non-Repetable Read ist ein Lesevorgang, der im Falle von **mehrmaligem Lesen zu unterschiedlichen Ergebnissen führt**. Innerhalb einer Transaktion führt die mehrfache Ausführung einer Abfrage zu **unterschiedlichen Ergebnissen**, die durch zwischenzeitliche Änderungen (`update`) und Löschungen (`delete`) entstehen. Die einzelnen Abfrageergebnisse sind konsistent, beziehen sich aber auf unterschiedliche Zeitpunkte.
 
 ![Übersicht](./x_gitres/non-repeatable-read.png)
 
@@ -314,12 +315,12 @@ Ein Non-Repetable Read ist ein Lesevorgang, der im Falle von mehrmaligem Lesen z
 
 **Phantom-Read:**
 
-Ein Phantom ist ein Lesevorgang bzgl. einer Datenmenge, die einer bestimmten Bedingung genügen. Fügt eine andere Transaktion einen Datensatz ein, der ebenfalls diese Bedingung erfüllt, dann führt die Wiederholung der Abfrage innerhalb einer Transaktion zu unterschiedlichen Ergebnissen. Bei jeder Wiederholung einer Abfrage innerhalb einer Transaktion enthält das zweite Abfrageergebnis mehr Datensätze als das erste, wenn in der Zwischenzeit neue Datensätze eingefügt wurden.
+Ein **Phantom** ist ein Lesevorgang bzgl. einer Datenmenge, die einer bestimmten Bedingung genügen. Fügt eine andere Transaktion einen Datensatz ein, der ebenfalls diese Bedingung erfüllt, dann führt die Wiederholung der Abfrage innerhalb einer Transaktion zu **unterschiedlichen Ergebnissen**. Bei jeder Wiederholung einer Abfrage innerhalb einer Transaktion enthält das **zweite Abfrageergebnis mehr Datensätze als das erste**, wenn in der Zwischenzeit neue Datensätze eingefügt wurden.
 
 ![Übersicht](./x_gitres/phantom-read.png)
 
 - Tritt auf, wenn Berechnungen auf gelesene Werte gemacht werden und diese Werte in der Zwischenzeit von einer anderen Transaktion verändert werden.
-- Das DBMS muss sicherstellen, dass jede Transaktion während der gesamten Laufzeit immer dieselbe Datensituation antrifft, wie zu Beginn der Transaktion.
+- Das DBMS muss sicherstellen, dass jede Transaktion während der gesamten Laufzeit immer **dieselbe Datensituation** antrifft, wie zu Beginn der Transaktion.
 
 ---
 
@@ -331,7 +332,7 @@ Man unterscheidet hierbei zwei grundlegende Philosophien: **Pessimismus** und **
 
 ## 4.1. Pessimistische Verfahren
 
-**Pessimistische Verfahren** sichern Transaktionen ab, indem sie durch Sperren die zu lesenden oder zu verändernden Daten vor andern Zugriffen schützen. Dabei werden zu Beginn der Transaktion alle Sperren gesetzt und diese am Ende der Transaktion wieder abgebaut. Transaktionen, die auf Daten zugreifen wollen, welche durch eine andere Transaktion gesperrt wurden, müssen warten, bis die Daten wieder freigegeben werden. Bei Transaktionen, die Benutzereingriffe erwarten, um beispielsweise Entscheidungen zu treffen, wird von diesem Verfahren abgeraten, da der Benutzer unbewusst andere Benutzer stundenlang blockieren kann.
+**Pessimistische Verfahren** sichern Transaktionen ab, indem sie **durch Sperren die zu lesenden oder zu verändernden Daten vor andern Zugriffen schützen**. Dabei werden zu Beginn der Transaktion alle Sperren gesetzt und diese am Ende der Transaktion wieder abgebaut. Transaktionen, die auf Daten zugreifen wollen, welche durch eine andere Transaktion gesperrt wurden, müssen warten, bis die Daten wieder freigegeben werden. Bei Transaktionen, die Benutzereingriffe erwarten, um beispielsweise Entscheidungen zu treffen, wird von diesem Verfahren abgeraten, da der Benutzer unbewusst andere Benutzer stundenlang blockieren kann.
 
 Das System geht davon aus, dass Konflikte sehr wahrscheinlich sind. Sobald ein Benutzer einen Datensatz liest oder bearbeiten möchte, wird dieser für andere **gesperrt**.
 
@@ -353,10 +354,10 @@ Das System geht davon aus, dass Konflikte sehr wahrscheinlich sind. Sobald ein B
 
 ## 4.2. Optimistische Verfahren
 
-Bei optimistischen Verfahren geht man davon aus, dass Konflikte konkurrierender Transaktionen selten vorkommen. Daher wird wo immer möglich auf Sperren verzichtet, um so die Parallelität zu erhöhen und die Performance des Systems zu verbessern. Das Verfahren durchläuft 3 Phasen:
+Bei optimistischen Verfahren geht man davon aus, **dass Konflikte konkurrierender Transaktionen selten vorkommen**. Daher wird wo immer möglich auf Sperren verzichtet, um so die Parallelität zu erhöhen und die Performance des Systems zu verbessern. Das Verfahren durchläuft 3 Phasen:
 
-- **Lesephase:** In der Lesephase werden die benötigten Daten gelesen und in einen lokalen Arbeitsbereich kopiert und dort bearbeitet. Sind auch Benutzereingriffe notwendig, finden sie jetzt statt. Nichts ist gesperrt.
-- **Validierungsphase:**  In der Validierungsphase wird überprüft, ob andere Transaktionen in der Zwischenzeit dieselben Daten bearbeitet haben. Wenn ja, muss unter Umständen gar der Benutzer benachrichtigt werden. Wenn nein, kann in die Schreibphase übergegangen werden.
+- **Lesephase:** In der Lesephase werden die benötigten Daten gelesen und in einen lokalen Arbeitsbereich kopiert und dort bearbeitet. Sind auch Benutzereingriffe notwendig, finden sie jetzt statt. **Nichts ist gesperrt**.
+- **Validierungsphase:**  In der Validierungsphase wird überprüft, ob andere Transaktionen in der **Zwischenzeit dieselben Daten bearbeitet** haben. Wenn ja, muss unter Umständen gar der Benutzer benachrichtigt werden. Wenn nein, kann in die Schreibphase übergegangen werden.
 - **Schreibphase:** Jetzt wird die Transaktion ausgeführt. Die Daten sind nur für einen relativ kurzen Zeitintervall gesperrt.
 
 Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren während der Bearbeitung gesetzt. Jeder darf alles lesen und lokal ändern.
@@ -365,10 +366,10 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
   1. Benutzer A liest Daten (und merkt sich die Version, z. B. über einen Zeitstempel oder ROWVERSION).
   2. Benutzer B liest dieselben Daten gleichzeitig.
   3. Beide arbeiten lokal.
-  4. Die Stunde der Wahrheit: Wenn A speichert, prüft das System: "Ist die Version noch die gleiche wie beim Lesen?" Wenn ja -> Speichern erfolgreich.
-  5. Wenn nun B speichern will, stellt das System fest: "Die Version hat sich geändert (durch A)!" -> B erhält eine Fehlermeldung und muss von vorne beginnen.
+  4. **Die Stunde der Wahrheit:** Wenn A speichert, prüft das System: "Ist die Version noch die gleiche wie beim Lesen?" Wenn ja -> Speichern erfolgreich.
+  5. **Wenn nun B speichern will, stellt das System fest**: "Die Version hat sich geändert (durch A)!" -> B erhält eine Fehlermeldung und muss von vorne beginnen.
 - **Vorteil:** Sehr hohe Performance und Skalierbarkeit, da niemand auf andere warten muss.
-- **Nachteil:** Wenn doch viele Leute gleichzeitig dasselbe ändern, müssen viele Operationen wiederholt werden (Rollbacks).
+- **Nachteil:** Wenn doch viele Leute gleichzeitig dasselbe ändern, müssen viele Operationen wiederholt werden (Rollback's).
 
 > **Motto: "Es wird schon gutgehen – wir prüfen am Ende."**
 
@@ -415,8 +416,8 @@ Das System geht davon aus, dass Konflikte selten sind. Es werden keine Sperren w
 
 **Generell:**
 
-- Ein DBMS stellt sicher, dass sämtliche Transaktionen, für die ein Commit ausgeführt wurde, bei einem Stromausfall, bei SW-Fehlern und andern Abstürzen wiedergegeben werden.
-- Nach einem Absturz wird beim Booten anhand des Transaction Logs für alle Transaktionen, für die ein Commit vorliegt, ein Rollforward und für alle unvollständigen Transaktionen ein Rollback ausgeführt.
+- Ein DBMS stellt sicher, dass sämtliche Transaktionen, für die ein `Commit` ausgeführt wurde, bei einem Stromausfall, bei SW-Fehlern und andern Abstürzen wiedergegeben werden.
+- Nach einem Absturz wird beim Booten anhand des Transaction Logs für alle Transaktionen, für die ein `Commit` vorliegt, ein **Rollforward** und für alle unvollständigen Transaktionen ein Rollback ausgeführt.
 - Um die verlorenen Transaktionen zu wiederholen, muss nur bis zum letzten Checkpoint zurückgegangen werden.
 
 **Beispiel:**
@@ -431,7 +432,7 @@ Man spricht von einer Spiegelung einer DB, wenn zwei separate Kopien des Datenbe
 
 ### 5.1.2. Schlussfolgerung
 
-Die Verfahren zur Wiederherstellung einer DB nach einem Absturz, wie mit Hilfe eines Transaction Logs sind wirksam, aber teuer. Die Spiegelung ist sogar noch teurer. Bei Datenbankanwendungen, von denen das Überleben eines Unternehmens abhängt, geht man davon aus, dass die Verbesserung der Zuverlässigkeit, die mit diesen Techniken erreicht werden, die Kosten wert sind.
+Die Verfahren zur Wiederherstellung einer DB nach einem Absturz, wie mit Hilfe eines** Transaction Logs** sind wirksam, aber teuer. Die Spiegelung ist sogar noch teurer. Bei Datenbankanwendungen, von denen das Überleben eines Unternehmens abhängt, geht man davon aus, dass die Verbesserung der Zuverlässigkeit, die mit diesen Techniken erreicht werden, die Kosten wert sind.
 Bei preiswerten DBS wie z.B. Access werden Sie solche Funktionen jedoch nicht finden.
 
 ---
@@ -442,7 +443,7 @@ Bei preiswerten DBS wie z.B. Access werden Sie solche Funktionen jedoch nicht fi
 
 Ein **Deadlock** (zu Deutsch: Verklemmung) ist eine Sackgasse in einem Mehrbenutzersystem. Er tritt auf, wenn zwei oder mehr Transaktionen **gegenseitig** auf Ressourcen warten, die von der jeweils anderen Transaktion gesperrt sind.
 
-Stellen Sie sich das wie einen Kreisverkehr vor, in dem vier Autos gleichzeitig einfahren und jeder darauf wartet, dass der jeweils andere ihm Vorrang gewährt – niemand kann sich mehr bewegen.
+> Stellen Sie sich das wie einen **Kreisverkehr** vor, in dem vier Autos gleichzeitig einfahren und jeder darauf wartet, dass der jeweils andere ihm Vorrang gewährt – niemand kann sich mehr bewegen.
 
 **Transaktion A will Datensatz X**, den Transaktion B hält, und **Transaktion B will Datensatz Y**, den A schon gesperrt hat. Beide warten, beide hoffen, **keiner bewegt sich** – eine klassische **Beziehungskrise**. SQL Server greift dann als **Paartherapeut** ein: „Einer von euch muss loslassen.“ Und zack, eine Transaktion wird abgebrochen. „**Deadlock victim**“ – das klingt tragisch, ist aber manchmal die beste Lösung.
 
@@ -473,9 +474,9 @@ So verhindert man sie:
 
 ## 6.3. Beispiel Deadlock in der Bibliothek
 
-Herr T1 leiht sich in der Bibliothek ein Buch über Schrittmotoren. Der Titel dieses Buches ist F1. Beim Lesen dieses Buches findet T1 plötzlich den Hinweis, dass Schrittmotoren unter anderem auch in elektrischen Schreibmaschinen Verwendung finden. Da sich T1 sehr für den Einsatz von Schrittmotoren interessiert, geht er erneut in die Bibliothek mit der Absicht, sich ein Buch über elektrische Schreibmaschinen zu leihen. Dort wird ihm das Buch F2 empfohlen, mit dem Hinweis, dass dieses Buch vor kurzem erst an Herrn T2 verliehen wurde. Da ihm diese Problematik doch sehr am Herzen liegt, beschliesst T1, sein Buch über Schrittmotoren so lange zur Seite zu legen, bis er das Buch F2 über elektrische Schreibmaschinen ausleihen kann.
+Herr **T1** leiht sich in der Bibliothek ein Buch über **Schrittmotoren**. Der Titel dieses Buches ist F1. Beim Lesen dieses Buches findet **T1** plötzlich den Hinweis, dass **Schrittmotoren** unter anderem auch in elektrischen Schreibmaschinen Verwendung finden. Da sich **T1** sehr für den Einsatz von **Schrittmotoren** interessiert, geht er erneut in die Bibliothek mit der Absicht, sich ein Buch über **elektrische Schreibmaschinen** zu leihen. Dort wird ihm das Buch F2 empfohlen, mit dem Hinweis, dass dieses Buch vor kurzem erst an Herrn **T2** verliehen wurde. Da ihm diese Problematik doch sehr am Herzen liegt, beschliesst **T1**, sein Buch über **Schrittmotoren** so lange zur Seite zu legen, bis er das Buch F2 über **elektrische Schreibmaschinen** ausleihen kann.
 
-Unterdessen liest T2 sein Buch. Plötzlich findet er einen Hinweis auf sogenannte Schrittmotoren. Da er in diesen Dingen nicht so bewandert ist, er jedoch grosses Interesse an diesem Buch findet, beschliesst er, seine Lektüre zu unterbrechen und sich erst einmal ein Buch über Schrittmotoren auszuleihen. In der Bibliothek wird ihm natürlich sogleich das Buch F1, das die Thematik Schrittmotoren bestens behandelt, empfohlen. Da das Buch zurzeit verliehen ist, wird ihm geraten, er solle doch in den nächsten Tagen nochmals reinschauen. T2 geht unverrichteter Dinge nach Hause und wird sich noch oft, aber leider vergeblich, in der Bibliothek um das Buch über Schrittmotoren bemühen müssen. Genauso ergeht es T1, der vergeblich darauf wartet, dass T2 sein Buch über elektrische Schreibmaschinen wieder zurückgibt.
+Unterdessen liest **T2** sein Buch. Plötzlich findet er einen Hinweis auf sogenannte **Schrittmotoren**. Da er in diesen Dingen nicht so bewandert ist, er jedoch grosses Interesse an diesem Buch findet, beschliesst er, seine Lektüre zu unterbrechen und sich erst einmal ein Buch über **Schrittmotoren** auszuleihen. In der Bibliothek wird ihm natürlich sogleich das Buch F1, das die Thematik **Schrittmotoren** bestens behandelt, empfohlen. Da das Buch zurzeit verliehen ist, wird ihm geraten, er solle doch in den nächsten Tagen nochmals reinschauen. **T2** geht unverrichteter Dinge nach Hause und wird sich noch oft, aber leider vergeblich, in der Bibliothek um das Buch über **Schrittmotoren** bemühen müssen. Genauso ergeht es T1, der vergeblich darauf wartet, dass **T2** sein Buch über **elektrische Schreibmaschinen** wieder zurückgibt.
 
 > **Jeder wartet somit ewig auf den anderen, ohne von ihm zu wissen. Es ist ein Deadlock entstanden.**
 
