@@ -20,6 +20,8 @@
   - [2.2. SQL-Indexe implementieren](#22-sql-indexe-implementieren)
   - [2.3. Gruppenarbeit - SQL Server Performance Tuning and Monitoring](#23-gruppenarbeit---sql-server-performance-tuning-and-monitoring)
 
+---
+
 </br>
 
 # 1. Datenbank Indizes
