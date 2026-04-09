@@ -14,9 +14,11 @@
   - [1.9. Ausführungsplan lesen bzw. interpretieren](#19-ausführungsplan-lesen-bzw-interpretieren)
     - [1.9.1. Analyse Clustered Index Seek](#191-analyse-clustered-index-seek)
     - [1.9.2. Analyse Table Scan](#192-analyse-table-scan)
+  - [1.10. Index-Beispiele](#110-index-beispiele)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Gruppenarbeit Datenstrukturen](#21-gruppenarbeit-datenstrukturen)
   - [2.2. SQL-Indexe implementieren](#22-sql-indexe-implementieren)
+  - [2.3. Gruppenarbeit - SQL Server Performance Tuning and Monitoring](#23-gruppenarbeit---sql-server-performance-tuning-and-monitoring)
 
 </br>
 
@@ -24,7 +26,7 @@
 
 ![Übersicht](./x_gitres/indexe-overview.png)
 
-**Datenzugriff:** In einer DB werden 2 Methoden zum Zugriff auf Daten eingesetzt: Tablescan oder **indizierter Zugriff**.
+**Datenzugriff:** In einer DB werden 2 Methoden zum Zugriff auf Daten eingesetzt: **Tablescan** oder **indizierter Zugriff**.
 Bei einer Abfrage prüft die DB zunächst, ob ein **Index** vorhanden ist. Anschliessend wird mit dem Abfrageoptimierer (die Komponente für die Generierung optimaler Ausführungspläne) ermittelt, ob durch einen **Tablescan** oder durch die Verwendung des **Index** ein effizienterer Datenzugriff ermöglicht wird.
 
 **Tablescan:**
@@ -46,9 +48,13 @@ Bei einer Abfrage prüft die DB zunächst, ob ein **Index** vorhanden ist. Ansch
 
 ![Binärbaum](./x_gitres/binary-tree.png)
 
+---
+
 **B+ Baum:**
 
 ![B+ Baum](./x_gitres/balanced-btree.jpg)
+
+---
 
 Angenommen, eine Tabelle Kunde enthält 500'000 Datensätze.
 
@@ -60,7 +66,7 @@ SELECT *
 
 **Ohne Index muss das DBMS:**
 
-- Jeden Datensatz prüfen
+- **Jeden** Datensatz prüfen
 - Einen sogenannten Full **Table Scan** durchführen
 - Seite für Seite lesen
 - Laufzeit wächst proportional zur Anzahl Datensätze (**O(n)**).
@@ -68,7 +74,7 @@ SELECT *
 **Mit einem Index kann das DBMS:**
 
 - Die Suche über eine **Baumstruktur** durchführen
-- Nur wenige Seiten lesen
+- Nur **wenige** Seiten lesen
 - Direkt zum Ziel navigieren
 - Laufzeit typischerweise O(log n).
 
@@ -287,6 +293,10 @@ Select * from Employees
 - Tatsächliche Anzahl von Zeilen für alle Ausführungen = 1
 - Im Allgemeinen sind Index-Scans für die Leistung schlecht.
 
+## 1.10. Index-Beispiele
+
+![Index-Beispiele](./x_gitres/Index-beispiele.sql)
+
 ---
 
 </br>
@@ -315,11 +325,10 @@ Dabei sollen folgende Punkte untersucht werden:
 - Spezifische Merkmale
 - Einsatzbereich (Beispiele)
 - Vor-/ Nachteile
-
 - Schaue die [Visualizing Algorithms](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) Seite an.
 - Stelle die Ergebnisse mittels einer Kurzpräsentation der Klasse vor.
 - Verwende dabei die Hilfsmittel wie Flow-Charts, Beamer, Wandtafel usw. und verweisen Sie ggf. auf weitere die Literatur.
-- Die Zusammenfassungen sind dann den anderen Klassenkameraden zur Verfügung zustellen.
+- Die Zusammenfassungen sind dann den anderen Klassenkameraden-/innen zur Verfügung zustellen.
 
 **Gruppen:**
 
@@ -401,6 +410,72 @@ Schreibe den SQL-Befehle, um den Index IX_StudentNachnameVorname in der Student-
 ```sql
 DROP INDEX index_name ON tab_name
 ```
+
+---
+
+</br>
+
+## 2.3. Gruppenarbeit - SQL Server Performance Tuning and Monitoring
+
+| **Vorgabe**             | **Beschreibung**                                                                                                                              |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Lernziele**           | Grundlegende Techniken zur Analyse von Performance Problemen und Sicherstellung einer optimalen Leistung eines Datenbanksystems sind bekannt. |
+| **Sozialform**          | Gruppenarbeit                                                                                                                                 |
+| **Auftrag**             | siehe unten                                                                                                                                   |
+| **Hilfsmittel**         | Internet                                                                                                                                      |
+| **Erwartete Resultate** |                                                                                                                                               |
+| **Zeitbedarf**          | 60 min                                                                                                                                        |
+| **Lösungselemente**     | Markdown oder PowerPoint Datei                                                                                                                |
+
+**Einführung:**
+
+Der SQL-Server stellt verschiedene Tools zur Leistungsüberwachung und -optimierung zur Verfügung.
+Diese bitten Möglichkeiten nachfolgende Leistungen u. Probleme lokalisieren zu können:
+
+- deadlocks
+- blocking
+- missing and unused indexes
+- I/O bottlenecks
+- poor query plans
+- statistics
+- wait stats
+- fragmentation
+
+**Auftrag:**
+
+- Analysiere die Leistungs- und Funktionsumfang des zugewiesene Tools und fasse diese kurz zusammen ggf. auch mit kleinen Beispielen.
+- Erstelle eine kleine Präsentation und stelle der Klasse den Funktionsumfang des Tools in der Form einer Live-Demo der Klasse vor.
+
+**Gruppe 1 - SQL Server Profiler:**
+
+Ein wichtiges Tool, welches die Dauer, Anzahl der Lesevorgänge, Anzahl der Schreibvorgänge usw. von Datenbankmutationen und Abfragen ermittelt.
+Der Profiler kann direkt aus dem Management-Studio oder über das Windows Start-Menü gestartet werden.
+
+![Profiler](./x_gitres/sql-server-profiler.png)
+
+**Gruppe 2 - Query Execution Plans:**
+
+Der Ausführungsplan zeigt, wie SQL Server eine Abfrage aufschlüsselt und gibt Aufschluss darüber, wo
+innerhalb des Ausführungsplans Probleme auftreten könnten.
+
+![Execution Plan](./x_gitres/sql-server-query-execution-plan.png)
+
+**Gruppe 3 - Database Engine Tuning Advisor:**
+
+SQL Server enthält ausserdem ein weiteres Leistungstool, den Database Engine Tuning Advisor (DTA).
+Dieses Tool analysiert ein oder mehrere SQL-Anweisung und macht Tuning Vorschläge.
+
+![Tuning Advisor](./x_gitres/sql-server-engine-tuning-advisor.png)
+
+**Gruppe 4 - Built in Performance Reports:**
+
+Eine weitere Möglichkeit leistungsbezogene Informationen von SQL Server zu erhalten, ist die
+Verwendung der integrierten Leistungsberichte.
+Die Berichte liefern nützliche Informationen, wo Ihre Leistungsengpässe liegen könnten.
+
+![BuildIn Performance](./x_gitres/sql-server-buildin-performance.png)
+
+![Blocking Transactions](./x_gitres/blocking-transactions.png)
 
 ---
 

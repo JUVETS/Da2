@@ -77,7 +77,7 @@ SELECT * from Abteilungsuebersicht;
 
 **Views Einschränkungen:**
 
-  - Ohne `UNION`, `ORDER BY`, `SELECT INTO` Befehle
+- Ohne `UNION`, `ORDER BY`, `SELECT INTO` Befehle
 
 ## 1.4. Betrachtungsweise
 
