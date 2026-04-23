@@ -77,7 +77,7 @@ SELECT * from Abteilungsuebersicht;
 
 **Views Einschränkungen:**
 
-- Ohne `UNION`, `ORDER BY`, `SELECT INTO` Befehle
+- Ohne `ORDER BY`, `SELECT INTO` Befehle
 
 ## 1.4. Betrachtungsweise
 
@@ -86,7 +86,7 @@ SELECT * from Abteilungsuebersicht;
 
 ## 1.5. Sicherheit (Zugriffssteuerung)
 
-Mit View's kann der Zugriffsschutz auf sensible Daten eingeschränkt werden.
+Mit View's kann der **Zugriffsschutz** auf sensible Daten eingeschränkt werden.
 
 **Tabelle Mitarbeiter enthält:**
 
@@ -167,10 +167,10 @@ Nicht jede View ist updatefähig.
 
 ## 1.9. Vorteile
 
-- Eine View bietet alle Vorteile einer einfachen Subroutine, einmal programmieren, vielfach anwenden.
+- Eine View bietet alle Vorteile einer einfachen **Subroutine**, einmal programmieren, vielfach anwenden.
 - Kapselung komplexer JOINs
-- Eine View reduziert für deren Anwender die Komplexität, die sich darunter verbirgt.
-- Eine View kann als Komponente des Datenschutzes eingesetzt werden, indem die Existenz von gewissen Zeilen oder Spalten ( hier das Gehalt ) je nach Benutzergruppe ein- oder ausgeblendet werden kann. Ein DBS kann den Benutzern keine Berechtigung zum Abfragen bestimmter Spalten in Basistabellen gewähren, sondern nur eine Berechtigung für Views.
+- Eine View reduziert für deren Anwender die **Komplexität**, die sich darunter verbirgt.
+- Eine View kann als Komponente des **Datenschutzes** eingesetzt werden, indem die Existenz von gewissen Zeilen oder Spalten (hier das Gehalt) je nach Benutzergruppe ein- oder ausgeblendet werden kann. Ein DBS kann den Benutzern keine Berechtigung zum Abfragen bestimmter Spalten in Basistabellen gewähren, sondern nur eine Berechtigung für Views.
 - Lesbarere Abfragen
 - Höhere Wartbarkeit
 - Zentralisierung von Business-Logik

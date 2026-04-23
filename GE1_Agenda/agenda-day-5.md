@@ -12,7 +12,7 @@
   
 ---
 
-- **[SQL Views (virtuelle Tabellen](../SQ3_Views/README.md.md)**
+- **[SQL Views (virtuelle Tabellen)](../SQ3_Views/README.md)**
   - Einführung
   - Datenabstraktion
   - Sicherheit
@@ -21,7 +21,7 @@
 
 ---
 
-- **[Materialisierte Views (Materialized Views)](../SQ3_Views/README.md.md)**
+- **[Materialisierte Views (Materialized Views)](../SQ3_Views/README.md)**
   - Einführung
   - Vor- und Nachteile
   - Vergleich zu normalen Views
