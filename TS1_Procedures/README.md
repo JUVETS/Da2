@@ -37,8 +37,9 @@
   - [3.3. Function vs. Stored Procedure](#33-function-vs-stored-procedure)
 - [4. Aufgaben](#4-aufgaben)
   - [4.1. Einführung - TSQL](#41-einführung---tsql)
-  - [4.2. Prozeduren implementieren](#42-prozeduren-implementieren)
-  - [4.3. Benutzerdefinierte Funktionen implementieren](#43-benutzerdefinierte-funktionen-implementieren)
+  - [4.2. Gruppenarbeit - Temporäre Tabellen](#42-gruppenarbeit---temporäre-tabellen)
+  - [4.3. Prozeduren implementieren](#43-prozeduren-implementieren)
+  - [4.4. Benutzerdefinierte Funktionen implementieren](#44-benutzerdefinierte-funktionen-implementieren)
 
 ---
 
@@ -635,34 +636,69 @@ SELECT * FROM dbo.fn_KundenInRegion('Schweiz');
 | **Lösungselemente**     | SQL-Skriptdatei                                                                                   |
 
 **A1:**
-Speichern Sie die Anzahl der Studenten der Fachrichtung «Maschinenbau» in einer Variable und geben Sie die Anzahl wie folgt aus:
-Anzahl Studenten der Fachrichtung Maschinenbau = 2
+Speichern Sie die Anzahl der Studenten der Fachrichtung **Maschinenbau** in einer Variable und geben Sie die Anzahl wie folgt aus:
+> Anzahl Studenten der Fachrichtung Maschinenbau = 2
 
 **A2:**
-Speichern Sie den Vor- und Nachnamen des Studenten mit StudentNr=1 in zwei Variablen und geben Sie diese danach aus.
+Speichern Sie den Vor- und Nachnamen des Studenten mit **StudentNr=1** in zwei Variablen und geben Sie diese danach aus.
 
-z.B.
-Vorname = ..., Nachmanme = ...
+> z.B.
+> Vorname = ..., Nachmanme = ...
 
 **A3:**
 Listen Sie die Studenten (Name, Vorname, Geburtsdatum) mit der Kurzbezeichnung der Fachrichtung.
 Verwenden Sie den CASE-Befehl
 
-z.B.
-BWL => BW
-Maschinenbau => MB
-Biologie => BI
+> z.B.
+> BWL => BW
+> Maschinenbau => MB
+> Biologie => BI
 …
 
 **A4:**
 Ermitteln Sie die Anzahl der BWL und Biologie Studenten und geben Sie diese im Meldungsfenster aus. Weisen Sie die ermittelte Menge zuerst einer Variable zu und geben Sie das Resultat wie folgt aus.
 
-z.B.
-BWL=2, Biologie=1
+> z.B.
+> BWL=2, Biologie=1
 
 ---
 
-## 4.2. Prozeduren implementieren
+## 4.2. Gruppenarbeit - Temporäre Tabellen
+
+| **Vorgabe**             | **Beschreibung**                                                   |
+| :---------------------- | :----------------------------------------------------------------- |
+| **Lernziele**           | lokale und globale temporäre Tabellen erstellen                    |
+|                         | Daten in temporäre Tabellen einfügen                               |
+|                         | temporäre Tabellen mit SELECT-Abfragen verwenden                   |
+|                         | Unterschiede zwischen permanenten und temporären Tabellen erklären |
+| **Sozialform**          | Gruppenarbeit                                                      |
+| **Auftrag**             | siehe unten                                                        |
+| **Hilfsmittel**         |                                                                    |
+| **Erwartete Resultate** |                                                                    |
+| **Zeitbedarf**          | 30 min                                                             |
+| **Lösungselemente**     | SQL-Skriptdatei                                                    |
+
+In vielen Datenbankanwendungen müssen Daten zuerst zwischengespeichert, gefiltert oder verarbeitet werden, bevor sie dauerhaft gespeichert oder ausgewertet werden.
+Dafür eignen sich **temporäre Tabellen** in T-SQL besonders gut.
+
+In dieser Gruppenarbeit untersucht ihr den Einsatz von temporären Tabellen und löst praktische Aufgaben dazu.
+
+Diskutiert in der Gruppe folgende Fragen und notiert eure Antworten:
+
+- Wie wird eine lokale temporäre Tabelle erstellt?
+- Warum beginnt der Tabellenname mit #?
+- Wie können Daten in eine temporäre Tabelle eingefügt werden?
+- Was ist der Unterschied zwischen einer permanenten und einer temporären Tabelle?
+- Wann werden temporäre Tabellen automatisch gelöscht?
+- Welche Vorteile bieten temporäre Tabellen?
+- In welchen Situationen könnten temporäre Tabellen sinnvoll sein?
+- Was ist der Unterschied zwischen:
+  - `#TempTabelle`
+  - `##TempTabelle`
+
+---
+
+## 4.3. Prozeduren implementieren
 
 | **Vorgabe**             | **Beschreibung**                                       |
 | :---------------------- | :----------------------------------------------------- |
@@ -713,7 +749,7 @@ CREATE PROCEDURE usp… @parameter datatype
 
 ---
 
-## 4.3. Benutzerdefinierte Funktionen implementieren
+## 4.4. Benutzerdefinierte Funktionen implementieren
 
 | **Vorgabe**             | **Beschreibung**                                       |
 | :---------------------- | :----------------------------------------------------- |
