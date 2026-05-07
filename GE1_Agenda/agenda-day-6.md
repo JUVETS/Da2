@@ -38,8 +38,7 @@
 ---
 
 - **[Arbeitsauftrag](./../GE4_Exams/E2-TSQL.md)**
-  - freies Arbeiten
-  - Es findet kein Unterricht statt
+  - Prüfung 2
 
 ---
 
