@@ -236,13 +236,13 @@ SELECT ID, Name, Gehalt * 1.1 AS NeuerLohn
 
 Ein häufiger Diskussionspunkt in der HF ist die Abgrenzung zur Tabellenvariable (`DECLARE @Table TABLE`).
 
-| **Merkmal**    | **Temporäre Tabelle (#)**                |                                          |  |
-| -------------- | ---------------------------------------- | ---------------------------------------- |
-| Speicherort    | tempdb (Disk/Buffer)                     | tempdb (primär Memory, aber auch Disk)   |
-| Transaktionen  | Vollständiger Support (Rollback möglich) | Keine Teilnahme an Transaktionen         |
-| Indexe         | Ja (Clustered & Non-Clustered)           | Nur über Constraints (PK/Unique)         |
-| Statistiken    | Ja (Wichtig für den Optimizer)           | Nein (Schlechter bei großen Datenmengen) |
-| Einsatzbereich | Große Datenmengen (> 1000 Zeilen)        | Sehr kleine Zwischenmengen               |
+| **Merkmal**    | **Temporäre Tabelle (\#)**               |                                           |
+| -------------- | ---------------------------------------- | ----------------------------------------- |
+| Speicherort    | tempdb (Disk/Buffer)                     | tempdb (primär Memory, aber auch Disk)    |
+| Transaktionen  | Vollständiger Support (Rollback möglich) | Keine Teilnahme an Transaktionen          |
+| Indexe         | Ja (Clustered & Non-Clustered)           | Nur über Constraints (PK/Unique)          |
+| Statistiken    | Ja (Wichtig für den Optimizer)           | Nein (Schlechter bei grossen Datenmengen) |
+| Einsatzbereich | Grosse Datenmengen (> 1000 Zeilen)       | Sehr kleine Zwischenmengen                |
 
 ### 1.8.2. Best Practices & Performance
 
@@ -489,7 +489,7 @@ Diese Variante wird genutzt, wenn die Prozedur nicht nur eine Tabelle zurückgeb
 ```sql
 CREATE OR ALTER PROCEDURE dbo.usp_GetLagerBestand
     @ProduktID INT,
-    @Bestand INT OUTPUT,          -- Wert wird nach außen gereicht
+    @Bestand INT OUTPUT,          -- Wert wird nach aussen gereicht
     @LetzteAenderung DATE OUTPUT  -- Zweiter Output-Parameter
 AS
 BEGIN
