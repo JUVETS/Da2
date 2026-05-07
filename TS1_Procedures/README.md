@@ -36,8 +36,9 @@
   - [3.2. Vor- und Nachteile](#32-vor--und-nachteile)
   - [3.3. Function vs. Stored Procedure](#33-function-vs-stored-procedure)
 - [4. Aufgaben](#4-aufgaben)
-  - [4.1. Prozeduren implementieren](#41-prozeduren-implementieren)
-  - [4.2. Benutzerdefinierte Funktionen implementieren](#42-benutzerdefinierte-funktionen-implementieren)
+  - [4.1. Einführung - TSQL](#41-einführung---tsql)
+  - [4.2. Prozeduren implementieren](#42-prozeduren-implementieren)
+  - [4.3. Benutzerdefinierte Funktionen implementieren](#43-benutzerdefinierte-funktionen-implementieren)
 
 ---
 
@@ -620,7 +621,48 @@ SELECT * FROM dbo.fn_KundenInRegion('Schweiz');
 
 # 4. Aufgaben
 
-## 4.1. Prozeduren implementieren
+## 4.1. Einführung - TSQL
+
+| **Vorgabe**             | **Beschreibung**                                                                                  |
+| :---------------------- | :------------------------------------------------------------------------------------------------ |
+| **Lernziele**           | Die Studierenden gewinnen einen Einblick über die prozeduralen Elemente von T-SQL.                |
+|                         | Sie sind in der Lage, Variablen zu deklarieren und diesen Datenwerte aus der Datenbank zuzuweisen |
+| **Sozialform**          | Einzelarbeit                                                                                      |
+| **Auftrag**             | siehe unten                                                                                       |
+| **Hilfsmittel**         |                                                                                                   |
+| **Erwartete Resultate** |                                                                                                   |
+| **Zeitbedarf**          | 20 min                                                                                            |
+| **Lösungselemente**     | SQL-Skriptdatei                                                                                   |
+
+**A1:**
+Speichern Sie die Anzahl der Studenten der Fachrichtung «Maschinenbau» in einer Variable und geben Sie die Anzahl wie folgt aus:
+Anzahl Studenten der Fachrichtung Maschinenbau = 2
+
+**A2:**
+Speichern Sie den Vor- und Nachnamen des Studenten mit StudentNr=1 in zwei Variablen und geben Sie diese danach aus.
+
+z.B.
+Vorname = ..., Nachmanme = ...
+
+**A3:**
+Listen Sie die Studenten (Name, Vorname, Geburtsdatum) mit der Kurzbezeichnung der Fachrichtung.
+Verwenden Sie den CASE-Befehl
+
+z.B.
+BWL => BW
+Maschinenbau => MB
+Biologie => BI
+…
+
+**A4:**
+Ermitteln Sie die Anzahl der BWL und Biologie Studenten und geben Sie diese im Meldungsfenster aus. Weisen Sie die ermittelte Menge zuerst einer Variable zu und geben Sie das Resultat wie folgt aus.
+
+z.B.
+BWL=2, Biologie=1
+
+---
+
+## 4.2. Prozeduren implementieren
 
 | **Vorgabe**             | **Beschreibung**                                       |
 | :---------------------- | :----------------------------------------------------- |
@@ -671,7 +713,7 @@ CREATE PROCEDURE usp… @parameter datatype
 
 ---
 
-## 4.2. Benutzerdefinierte Funktionen implementieren
+## 4.3. Benutzerdefinierte Funktionen implementieren
 
 | **Vorgabe**             | **Beschreibung**                                       |
 | :---------------------- | :----------------------------------------------------- |
