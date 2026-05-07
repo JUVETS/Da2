@@ -37,6 +37,12 @@
 
 ---
 
+- **[Arbeitsauftrag](./../GE4_Exams/E2-TSQL.md)**
+  - freies Arbeiten
+  - Es findet kein Unterricht statt
+
+---
+
 </br>
 
 ![Lernziele](../x_gitres/learning-objectives.png)
@@ -46,6 +52,10 @@
 - [x] Sie können die Einsatzbereiche, Sinn u. Zweck von Datenbank Prozeduren erläutern.
 - [x] Sie können Vor- und Nachteile von Datenbank Prozeduren erläutern.
 - [x] Sie können die Basiselemente von T-SQL (Variablen, Ablaufsteuerungselemente) implementieren.
+- [x] Sie können **gespeicherte Prozeduren** in einer Datenbank erstellen, ändern, löschen und ausführen.
+- [x] Sie sind in der Lage eine **Logik** mit T-SQL in einer Datenbank zu implementieren.
+- [x] Sie kennen die Möglichkeiten von **Input/Output Parametern** von Prozeduren.
+- [x] Sie können die Einsatzbereiche, Sinn u. Zweck von benutzerdefinierten **Funktionen** erläutern.
 
 ---
 

@@ -19,10 +19,24 @@
 
 ---
 
-- **Modulabschluss**
-  - Reflexion / Feedback
-  - Lern- u. Handlungsziele
-  - Ausblick
+- **[TSQL-Triggers](../TS2_Triggers/README.md)**
+  - Einführung
+  - Einsatzbereiche
+  - Haupttypen
+    - AFTER
+    - INSTEAD OF
+  - Erstellen, ändern und löschen
+  - Vor- und Nachteile
+  - Praxis, Übungsaufgaben
+
+---
+
+- **[Cursor in T-SQL](../TS3_Cursors/README.md)**
+  - Einführung
+  - Einsatzbereiche
+  - Erstellen, ändern und löschen
+  - Vor- und Nachteile
+  - Praxis, Übungsaufgaben
 
 ---
 
@@ -32,12 +46,10 @@
 
 ## Lernziele
 
-- [x] Sie können **gespeicherte Prozeduren** in einer Datenbank erstellen, ändern, löschen und ausführen.
-- [x] Sie sind in der Lage eine **Logik** mit T-SQL in einer Datenbank zu implementieren.
-- [x] Sie kennen die Möglichkeiten von **Input/Output Parametern** von Prozeduren.
-- [x] Sie können die Einsatzbereiche, Sinn u. Zweck von benutzerdefinierten **Funktionen** erläutern.
-- [x] Sie kennen die Einsatzmöglichkeiten der verschiedenen Datenbank **Triggers (after, instead of)**
+- [x] Sie kennen die Einsatzmöglichkeiten der verschiedenen Datenbank **Triggers (after, instead of)**.
 - [x] Sie können eine **Trigger-Logik** in einer Datenbank erstellen, ändern, löschen.
+- [x] Sie können den Einsatzbereich von Cursors erläutern.
+- [x] Sie können eine **Cursor** in einer Datenbank erstellen und ausführen.
 
 ---
 
