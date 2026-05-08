@@ -2,7 +2,7 @@
 | --------------------------- | ------------------- | ------------------------------- |
 | **Techniker HF Informatik** | **Datenbanken Da2** | ![logo](./../x_gitres/logo.png) |
 
-- [1. Projektarbeit "TSQL-Prozedurale Elemente (Auftrag)"](#1-projektarbeit-tsql-prozedurale-elemente-auftrag)
+- [1. Arbeitsauftrag "TSQL-Prozedurale Elemente"](#1-arbeitsauftrag-tsql-prozedurale-elemente)
   - [1.1. Organisation und Zielsetzung](#11-organisation-und-zielsetzung)
   - [1.2. Allgemeines](#12-allgemeines)
   - [1.3. Auftrag](#13-auftrag)
@@ -20,7 +20,7 @@
 
 </br>
 
-# 1. Projektarbeit "TSQL-Prozedurale Elemente (Auftrag)"
+# 1. Arbeitsauftrag "TSQL-Prozedurale Elemente"
 
 ## 1.1. Organisation und Zielsetzung
 
