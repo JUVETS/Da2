@@ -29,7 +29,7 @@
 | **Lernziele**           | Die Studierenden sollen die verschiedenen prozeduralen Elemente von T-SQL in Microsoft SQL Server verstehen und anwenden |
 | **Sozialform**          | Teamarbeit mit max. Grösse von 3 Personen                                                                                |
 | **Auftrag**             | siehe unten                                                                                                              |
-| **Hilfsmittel**         | EBook: TSQL-Grundlagen                                                                                                   |
+| **Hilfsmittel**         | Skript                                                                                                                   |
 | **Erwartete Resultate** | - Jede Gruppe muss eine Präsentation erstellen, die die Konzepte erklärt, die in ihrer Arbeit behandelt werden.          |
 |                         | - Jede Gruppe muss ein SQL-Skript entwickeln, das die jeweiligen Anforderungen umsetzt                                   |
 | **Zeitbedarf**          | ca. 2h pro Teammitglied, 15-20 min (Präsentation)                                                                        |
@@ -39,7 +39,7 @@
 ## 1.2. Allgemeines
 
 - Sie setzen sich in die **Dozenten-/innen Rolle** und vermitteln der Klasse das zugeteilte Thema möglichst anschaulich, interessant und verständlich (**Flipped Classroom**).
-- Nutzen Sie dabei die Ihnen bekannten Präsentationstechniken.
+- Nutzen Sie dabei die Ihnen bekannten **Präsentationstechniken**.
 - Bestimmen Sie für die Arbeitszuteilungen, Koordination und Zusammenführung der Teilresultate einen Gruppenchef/-inn.
 
 ## 1.3. Auftrag
@@ -70,7 +70,8 @@
 - Erstellen Sie eine `WHILE`-Schleife, die alle Datensätze aus einer Tabelle liest und für jeden Datensatz eine Berechnung vornimmt.
 - Implementieren Sie einen `CURSOR`, der durch die Datensätze einer Tabelle iteriert und für jeden Datensatz eine Logik anwendet.
 - Verwenden Sie eine Bedingung (`IF`), um bestimmte Datensätze zu filtern und nur für diese die Berechnungen durchzuführen.
-- Erstellen Sie ein Beispiel, das mit Variablen, einer Schleife und einem Cursor Daten bearbeitet (z. B. Berechnung eines Umsatzes für alle Bestellungen in einer Tabelle Bestellungen).
+- Erstellen Sie ein Beispiel, das mit Variablen, einer Schleife und einem Cursor Daten bearbeitet (z.B. Berechnung eines Umsatzes für alle Bestellungen in einer Tabelle Bestellungen).
+- Erklären Sie, wie Laufzeitfehler in einer Fehlerbehandlung (Exception Handling) abgefangen und ausgwertet (Fehlernummer, Fehlermeldung usw.) werden.
 
 ---
 
@@ -85,8 +86,8 @@
 ### 1.5.2. Auftrag
 
 - Erklären Sie, was **Stored Procedures** sind und wie sie verwendet werden.
-- Erstellen Sie eine **Stored Procedure**, die Eingabeparameter empfängt (z. B. BestellID, Menge) und eine Ausgabe zurückgibt (z. B. berechneter Rabatt).
-- Erstellen Sie eine **Funktion**, die eine Berechnung vornimmt (z. B. Berechnung des Gesamtpreises nach Rabatt).
+- Erstellen Sie eine **Stored Procedure**, die Eingabeparameter empfängt (z.B. BestellID, Menge) und eine Ausgabe zurückgibt (z.B. berechneter Rabatt).
+- Erstellen Sie eine **Funktion**, die eine Berechnung vornimmt (z.B. Berechnung des Gesamtpreises nach Rabatt).
 - Erklären Sie den Unterschied zwischen einer **Stored Procedure** und einer **Funktion** in SQL-Server.
 - Demonstrieren Sie, wie Sie Funktionen und **Stored Procedures** zusammen verwenden können, um eine komplexe Logik zu implementieren (z.B. Berechnung des Gesamtumsatzes für einen bestimmten Zeitraum).
 
@@ -98,15 +99,15 @@
 
 ### 1.6.1. Thema
 
-- Erstellen Sie einen **Trigger**, der automatisch auf Datenänderungen reagiert und eine Aktion ausführt (z. B. Protokollierung von Änderungen oder automatische Aktualisierung).
+- Erstellen Sie einen **Trigger**, der automatisch auf Datenänderungen reagiert und eine Aktion ausführt (z.B. Protokollierung von Änderungen oder automatische Aktualisierung).
 
 ### 1.6.2. Auftrag
 
 - Erklären Sie, was **Trigger** sind und wie sie in SQL-Server verwendet werden.
 - Erstellen Sie einen `AFTER INSERT` **Trigger**, der bei jeder Einfügung in die Tabelle Bestellungen automatisch den Lagerbestand in der Tabelle Artikel aktualisiert.
-- Erstellen Sie einen `AFTER UPDATE` **Trigger**, der automatisch Änderungen an den Preisen in der Tabelle Produkte protokolliert (z. B. in einer Preisänderungsprotokoll-Tabelle).
+- Erstellen Sie einen `AFTER UPDATE` **Trigger**, der automatisch Änderungen an den Preisen in der Tabelle Produkte protokolliert (z.B. in einer Preisänderungsprotokoll-Tabelle).
 - Beschreiben Sie, wie **Trigger** dazu verwendet werden können, die Datenintegrität zu gewährleisten.
-- Stellen Sie sicher, dass der **Trigger** fehlerfrei funktioniert, auch wenn die Daten ungültig sind (z. B. durch Validierung vor der Ausführung).
+- Stellen Sie sicher, dass der **Trigger** fehlerfrei funktioniert, auch wenn die Daten ungültig sind (z.B. durch Validierung vor der Ausführung).
 
 ---
 
